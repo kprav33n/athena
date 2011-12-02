@@ -1,13 +1,13 @@
-;; Semantic.
-(setq semantic-default-submodes
-        '(global-semanticdb-minor-mode
-          global-semantic-idle-scheduler-mode
-          global-semantic-idle-summary-mode
-          global-semantic-idle-completions-mode
-          global-semantic-decoration-mode
-          global-semantic-highlight-func-mode
-          global-semantic-stickyfunc-mode))
-(semantic-mode 1)
+;; ;; Semantic.
+;; (setq semantic-default-submodes
+;;         '(global-semanticdb-minor-mode
+;;           global-semantic-idle-scheduler-mode
+;;           global-semantic-idle-summary-mode
+;;           global-semantic-idle-completions-mode
+;;           global-semantic-decoration-mode
+;;           global-semantic-highlight-func-mode
+;;           global-semantic-stickyfunc-mode))
+;; (semantic-mode 1)
 
 
 ;; ;; Auto complete mode.
@@ -23,11 +23,20 @@
 ;; (require 'help-mode)
 
 
+;; Tabs are evil.
+(setq-default indent-tabs-mode nil)
+
 ;; Whitespace mode.
 (require 'whitespace)
 (setq whitespace-style '(face lines-tail tab-mark trailing))
-(setq whitespace-global-modes '(c-mode c++-mode java-mode lisp-mode))
+(setq whitespace-global-modes '(c-mode c++-mode java-mode emacs-lisp-mode))
 (global-whitespace-mode t)
+
+
+;; YASnippet.
+(require 'yasnippet)
+(yas/initialize)
+(yas/load-directory (concat athena-root-dir "data/yasnippet/snippets"))
 
 
 ;; aHg - Mercurial frontend.
@@ -36,6 +45,7 @@
 
 
 ;; GNU Global.
+(require 'gtags)
 (add-hook 'c-mode-common-hook 'gtags-mode)
 
 
@@ -44,9 +54,13 @@
 (autopair-global-mode)
 
 
-;; ;; Doc-mode for Doxygen comments.
-;; (require 'doc-mode)
-;; (add-hook 'c-mode-common-hook 'doc-mode)
+;; Drag stuff.
+(require 'drag-stuff)
+(drag-stuff-global-mode 1)
+
+;; Doc-mode for Doxygen comments.
+(require 'doc-mode)
+(add-hook 'c-mode-common-hook 'doc-mode)
 
 
 ;; ;; Split root window.
