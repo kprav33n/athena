@@ -62,6 +62,8 @@
 (require 'doc-mode)
 (add-hook 'c-mode-common-hook 'doc-mode)
 
+;; ECB.
+(require 'ecb)
 
 ;; ;; Split root window.
 ;; (require 'split-root)

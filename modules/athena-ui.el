@@ -45,4 +45,7 @@
 (require 'color-theme-zenburn)
 (color-theme-zenburn)
 
+;; Spell checker.
+(setq ispell-program-name "aspell")
+
 (provide 'athena-ui)
