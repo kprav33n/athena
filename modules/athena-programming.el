@@ -1,11 +1,13 @@
-;; ;; CEDET.
-;; (load-file (concat user-emacs-directory "site/cedet/common/cedet.el"))
-;; (semantic-load-enable-excessive-code-helpers)
-;; (require 'semantic-ia)
-;; (global-semantic-idle-completions-mode 'nil)
-;; (require 'semanticdb-global)
-;; (semanticdb-enable-gnu-global-databases 'c-mode)
-;; (semanticdb-enable-gnu-global-databases 'c++-mode)
+;; Semantic.
+(setq semantic-default-submodes
+        '(global-semanticdb-minor-mode
+          global-semantic-idle-scheduler-mode
+          global-semantic-idle-summary-mode
+          global-semantic-idle-completions-mode
+          global-semantic-decoration-mode
+          global-semantic-highlight-func-mode
+          global-semantic-stickyfunc-mode))
+(semantic-mode 1)
 
 
 ;; ;; Auto complete mode.
@@ -28,13 +30,18 @@
 (global-whitespace-mode t)
 
 
-;; ;; DVC.
-;; (load-file (concat user-emacs-directory "site/dvc/++build/dvc-load.el"))
+;; aHg - Mercurial frontend.
+(require 'cl)
+(require 'ahg)
 
 
 ;; GNU Global.
-(autoload 'gtags-mode "gtags" "" t)
 (add-hook 'c-mode-common-hook 'gtags-mode)
+
+
+;; Automagically pair braces and quotes like TextMate.
+(require 'autopair)
+(autopair-global-mode)
 
 
 ;; ;; Doc-mode for Doxygen comments.

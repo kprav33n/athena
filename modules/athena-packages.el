@@ -7,7 +7,7 @@
   (package-refresh-contents))
 
 (defvar athena-packages
-  '(autopair color-theme color-theme-zenburn gtags)
+  '(ahg autopair color-theme color-theme-zenburn gtags magit)
   "A list of packages that has to be ensured installed from package archives")
 
 (dolist (p athena-packages)
