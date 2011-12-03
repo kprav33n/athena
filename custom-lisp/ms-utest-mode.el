@@ -1,5 +1,21 @@
 ;; Copyright (C) 2011, Praveen Kumar.
 
+;; This file is not a part of GNU Emacs.
+
+;;; Commentary:
+
+;; This file provides a major mode for editing Messaging Server unit
+;; test files.
+
+;; To use this, copy this file to your `load-path' and add the
+;; following to your ~/.emacs or ~/.emacs.d/init.el.
+;;     (require 'ms-utest-mode)
+;;
+;; The mode will then be turned on automatically for files named
+;; utest.txt.
+
+;;; License:
+
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
 ;; the Free Software Foundation, either version 3 of the License, or
@@ -23,6 +39,7 @@
   (let ((table (make-syntax-table)))
     (modify-syntax-entry ?# "<" table)
     (modify-syntax-entry ?\n ">" table)
+    (modify-syntax-entry ?\" "w" table)
     table)
   "Syntax table for `ms-utest-mode'.")
 
@@ -33,7 +50,9 @@
           (group (1+ not-newline)))
      (1 font-lock-keyword-face)
      (2 font-lock-function-name-face)
-     (3 font-lock-comment-face))
+     (3 font-lock-doc-face))
+    (,(rx line-start (group "--") (* space) line-end)
+     (1 font-lock-string-face))
     )
   "Font lock keywords for `ms-utest-mode'."
   )
