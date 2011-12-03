@@ -63,7 +63,7 @@
   (set (make-local-variable 'font-lock-defaults)
        '(ms-utest-font-lock-keywords))
   (set (make-local-variable 'comment-start) "# ")
-  (set (make-local-variable 'comment-start-skip) "#+[\t ]*")
+  (set (make-local-variable 'comment-start-skip) (rx (1+ "#") (* space)))
   )
 
 (provide 'ms-utest-mode)
