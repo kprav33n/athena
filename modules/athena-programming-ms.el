@@ -32,6 +32,8 @@
     (c-set-style "oracle-ucs-ms")))
 (add-hook 'c-mode-common-hook 'oracle-ucs-ms-style-hook 'append)
 
+;; Guess style from the current code.
+(add-hook 'c-mode-common-hook 'guess-style-guess-all 'append)
 
 ;; Messaging Server unit test mode.
 (require 'ms-utest-mode)
