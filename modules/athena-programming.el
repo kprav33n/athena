@@ -120,24 +120,6 @@
           (lambda ()
             (flyspell-prog-mode)))
 
-;; UCS MS C/C++ style.
-(c-add-style
- "ucs-ms"
- '((indent-tabs-mode . t)
-   (fill-column . 75)
-   (c-basic-offset . 4)
-   (c-offsets-alist . ((innamespace . 0)
-                       (member-init-intro . ++)
-                       (access-label . /)
-                       ))))
-
-;; For msg source, use UCS MS style.
-(defun ucs-ms-style-hook ()
-  (when (and buffer-file-name
-             (string-match "/msg/" buffer-file-name))
-    (c-set-style "ucs-ms")))
-(add-hook 'c-mode-common-hook 'ucs-ms-style-hook)
-
 ;; ;; Google C/C++ style.
 ;; (require 'google-c-style)
 ;; (add-hook 'c-mode-common-hook 'google-set-c-style)

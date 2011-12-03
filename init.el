@@ -31,4 +31,5 @@
 (require 'athena-packages)
 (require 'athena-ui)
 (require 'athena-programming)
+(require 'athena-programming-ms)
 (require 'athena-org)
