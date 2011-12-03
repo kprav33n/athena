@@ -57,7 +57,7 @@
   "Font lock keywords for `ms-utest-mode'."
   )
 
-(define-derived-mode ms-utest-mode fundamental-mode "MS-UTest"
+(define-derived-mode ms-utest-mode text-mode "MS-UTest"
   "A major mode for editing Messaging Server unit test files."
   :syntax-table ms-utest-mode-syntax-table
   (set (make-local-variable 'font-lock-defaults)
