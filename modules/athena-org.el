@@ -17,6 +17,9 @@
 (require 'org-install)
 (setq org-replace-disputed-keys 't)
 
+;; Turn on flyspell.
+(add-hook 'org-mode-hook 'turn-on-flyspell 'append)
+
 ;; Generate standup report from Org file.
 ;; Fixme: Refactor this function.
 (defun athena-standup-report-from-org()

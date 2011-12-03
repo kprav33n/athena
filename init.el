@@ -13,6 +13,9 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+;; Use homebrew binaries.
+(push "/usr/local/bin" exec-path)
+
 ;; Setup directories.
 (defvar athena-root-dir (file-name-directory load-file-name))
 (defvar athena-modules-dir (concat athena-root-dir "modules/"))

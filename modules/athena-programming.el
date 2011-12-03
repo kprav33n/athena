@@ -115,6 +115,11 @@
 ;;                  (message "compilation successful")))))
 
 
+;; Spell check comments.
+(add-hook 'c-mode-common-hook
+          (lambda ()
+            (flyspell-prog-mode)))
+
 ;; UCS MS C/C++ style.
 (c-add-style
  "ucs-ms"
