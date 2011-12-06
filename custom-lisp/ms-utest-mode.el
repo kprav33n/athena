@@ -49,7 +49,7 @@
     ;; Keywords.
     (,(rx line-start
           (submatch (or "activate" "test" "testglob"
-                        (seq "testvar=" (1+ (or word ?_)))))
+                        (and "testvar=" (1+ (or word ?_)))))
           (1+ space)
           (submatch (1+ (or word ?_))) (1+ space)
           (submatch (1+ not-newline)))
