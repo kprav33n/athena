@@ -37,23 +37,28 @@
 
 (defvar ms-utest-mode-syntax-table
   (let ((table (make-syntax-table)))
-    (modify-syntax-entry ?# "<" table)
-    (modify-syntax-entry ?\n ">" table)
     (modify-syntax-entry ?\" "w" table)
     table)
   "Syntax table for `ms-utest-mode'.")
 
 (defvar ms-utest-font-lock-keywords
-  `((,(rx line-start
-          (group (or "activate" "test")) (1+ space)
-          (group (1+ (or word ?_))) (1+ space)
-          (group (1+ not-newline)))
+  `(
+    ;; Comments.
+    (,(rx line-start (or "#" "!" ";") (* not-newline) line-end)
+     (0 font-lock-comment-face))
+    ;; Keywords.
+    (,(rx line-start
+          (submatch (or "activate" "test" "testglob"
+                        (seq "testvar=" (1+ (or word ?_)))))
+          (1+ space)
+          (submatch (1+ (or word ?_))) (1+ space)
+          (submatch (1+ not-newline)))
      (1 font-lock-keyword-face)
      (2 font-lock-function-name-face)
      (3 font-lock-doc-face))
-    (,(rx line-start (group "--") (* space) line-end)
-     (1 font-lock-string-face))
-    )
+    ;; Separator.
+    (,(rx line-start "--" (* space) line-end)
+     (0 font-lock-string-face)))
   "Font lock keywords for `ms-utest-mode'."
   )
 
