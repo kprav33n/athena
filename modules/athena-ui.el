@@ -14,7 +14,8 @@
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ;; Default font.
-(set-frame-font "Monaco 13")
+(if (eq system-type 'darwin)
+    (set-frame-font "Monaco 13"))
 
 ;; Inhibit startup message.
 (setq inhibit-startup-screen 't)
@@ -62,5 +63,8 @@
 
 ;; Spell checker.
 (setq ispell-program-name "aspell")
+
+;; Save minibuffer history.
+(savehist-mode 1)
 
 (provide 'athena-ui)
