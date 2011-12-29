@@ -90,7 +90,7 @@
 ;; (defvar compilation-window nil
 ;;   "The window opened for displaying a compilation buffer.")
 ;; (setq compilation-window-height 14)
-;; (setq compilation-scroll-output t)
+(setq compilation-scroll-output t)
 
 ;; (defun athena-display-buffer (buffer &optional not-this-window)
 ;;   (if (or (compilation-buffer-p buffer)
