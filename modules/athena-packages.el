@@ -30,8 +30,9 @@
 
 ;; Set of packages to install.
 (defvar athena-packages
-  '(ahg autopair color-theme color-theme-zenburn doc-mode drag-stuff
-        ecb_snap gtags guess-style magit org yasnippet)
+  '(ahg autopair cmake-mode color-theme color-theme-zenburn
+        doc-mode drag-stuff ecb_snap gtags guess-style magit org
+        yasnippet)
   "A list of packages that has to be ensured installed from package archives")
 
 ;; Install packages if not already installed.
