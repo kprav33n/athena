@@ -120,10 +120,10 @@
           (lambda ()
             (flyspell-prog-mode)))
 
-;; ;; Google C/C++ style.
-;; (require 'google-c-style)
-;; (add-hook 'c-mode-common-hook 'google-set-c-style)
-;; (add-hook 'c-mode-common-hook 'google-make-newline-indent)
+;; Google C/C++ style.
+(require 'google-c-style)
+(add-hook 'c-mode-common-hook 'google-set-c-style)
+(add-hook 'c-mode-common-hook 'google-make-newline-indent)
 
 
 (provide 'athena-programming)
