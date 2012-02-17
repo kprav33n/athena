@@ -60,6 +60,7 @@
 
 
 ;; GNU Global.
+(setq gtags-suggested-key-mapping t)
 (require 'gtags)
 (add-hook 'c-mode-common-hook 'gtags-mode)
 
