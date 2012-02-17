@@ -15,6 +15,8 @@
 
 ;; Use homebrew binaries.
 (if (eq system-type 'darwin)
-    (push "/usr/local/bin" exec-path))
+    (progn
+      (push "/usr/local/bin" exec-path)
+      (push "/usr/texlive/bin" exec-path)))
 
 (provide 'athena-env)
