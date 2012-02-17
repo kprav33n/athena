@@ -58,4 +58,20 @@
 					   "~/UCS/Scripts/AppleScript/NGSStandupReport.scpt"))
   (kill-buffer "Standup Report"))
 
+(add-to-list 'org-emphasis-alist
+             '("@" org-warning "<b>" "</b>"))
+(add-to-list 'org-export-latex-emphasis-alist
+             '("@" "\\alert{%s}" nil))
+
+(require 'ob-plantuml)
+(setq org-plantuml-jar-path
+      (concat user-emacs-directory "elpa/contrib/scripts/plantuml.jar"))
+
+(require 'ob-ditaa)
+
+(defun my-org-confirm-babel-evaluate (lang body)
+            (and (not (string= lang "plantuml"))
+                 (not (string= lang "ditaa"))))
+(setq org-confirm-babel-evaluate 'my-org-confirm-babel-evaluate)
+
 (provide 'athena-org)
