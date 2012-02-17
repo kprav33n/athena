@@ -128,5 +128,6 @@
 
 ;; CMake mode.
 (require 'cmake-mode)
+(add-to-list 'auto-mode-alist (cons (purecopy "CMakeLists.txt") 'cmake-mode))
 
 (provide 'athena-programming)
