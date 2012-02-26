@@ -14,9 +14,16 @@
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ;; Use homebrew binaries.
+
+(defun setenv-from-path-helper ()
+  (setenv "MANPATH" "")
+  (setq path_helper_output (shell-command-to-string "/usr/libexec/path_helper"))
+  (when (string-match "^PATH=\"\\(.*\\)\"; export PATH;$" path_helper_output)
+    (setenv "PATH" (match-string 1 path_helper_output)))
+  (when (string-match "^MANPATH=\"\\(.*\\)\"; export MANPATH;$" path_helper_output)
+    (setenv "MANPATH" (match-string 1 path_helper_output))))
+
 (if (eq system-type 'darwin)
-    (progn
-      (push "/usr/local/bin" exec-path)
-      (push "/usr/texlive/bin" exec-path)))
+    (setenv-from-path-helper))
 
 (provide 'athena-env)
