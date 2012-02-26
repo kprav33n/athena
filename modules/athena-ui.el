@@ -56,10 +56,13 @@
 (setq uniquify-buffer-name-style 'post-forward)
 (setq uniquify-after-kill-buffer-p t)
 
-;; Zenburn color theme.
-(require 'color-theme)
-(require 'color-theme-zenburn)
-(color-theme-zenburn)
+(if (= emacs-major-version 24)
+    (progn
+      (load-theme 'solarized-light t))
+  (progn
+    (require 'color-theme)
+    (require 'color-theme-zenburn)
+    (color-theme-zenburn)))
 
 ;; Spell checker.
 (setq ispell-program-name "aspell")

@@ -29,10 +29,10 @@
   (package-refresh-contents))
 
 ;; Set of packages to install.
-(defvar athena-packages
-  '(ahg autopair cmake-mode clojure-mode color-theme color-theme-zenburn
-        doc-mode drag-stuff ecb_snap gtags guess-style magit org
-        yasnippet)
+(defvar athena-packages '(ahg autopair cmake-mode clojure-mode
+  color-theme color-theme-zenburn doc-mode drag-stuff ecb_snap
+  graphviz-dot-mode gtags guess-style magit markdown-mode org
+  solarized-theme yasnippet)
   "A list of packages that has to be ensured installed from package archives")
 
 ;; Install packages if not already installed.
