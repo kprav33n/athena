@@ -72,6 +72,7 @@
 
 ;; Drag stuff.
 (require 'drag-stuff)
+(add-to-list 'drag-stuff-except-modes 'org)
 (drag-stuff-global-mode 1)
 
 ;; Doc-mode for Doxygen comments.
@@ -129,5 +130,9 @@
 ;; CMake mode.
 (require 'cmake-mode)
 (add-to-list 'auto-mode-alist (cons (purecopy "CMakeLists.txt") 'cmake-mode))
+
+;; Markdown mode.
+(require 'markdown-mode)
+(add-to-list 'auto-mode-alist (cons (purecopy "\\.markdown$") 'markdown-mode))
 
 (provide 'athena-programming)
