@@ -15,7 +15,7 @@
 
 ;; Default font.
 (if (eq system-type 'darwin)
-    (set-frame-font "Monaco 13"))
+    (setq default-frame-alist '((font . "Monaco 13"))))
 
 ;; Inhibit startup message.
 (setq inhibit-startup-screen 't)
