@@ -58,7 +58,7 @@
 
 (if (= emacs-major-version 24)
     (progn
-      (load-theme 'solarized-light t))
+      (load-theme 'solarized-dark t))
   (progn
     (require 'color-theme)
     (require 'color-theme-zenburn)
