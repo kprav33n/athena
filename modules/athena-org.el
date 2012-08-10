@@ -63,6 +63,9 @@
 ;; (add-to-list 'org-export-latex-emphasis-alist
 ;;              '("@" "\\alert{%s}" nil))
 
+;; Keep timestamps in TOC.
+(setq org-export-remove-timestamps-from-toc nil)
+
 (require 'ob-ditaa)
 
 (require 'ob-dot)
