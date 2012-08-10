@@ -27,15 +27,24 @@
                        (member-init-intro . ++)
                        ))))
 
-;; For msg source, use UCS MS style.
-(defun oracle-ucs-ms-style-hook ()
+;; For msg source:
+;;  - Use oracle-ucs-ms style.
+;;  - Turn on flymake.
+(defun ms-c-mode-common-hook ()
   (when (and buffer-file-name
              (string-match "/msg/" buffer-file-name))
-    (c-set-style "oracle-ucs-ms")))
-(add-hook 'c-mode-common-hook 'oracle-ucs-ms-style-hook 'append)
+    (c-set-style "oracle-ucs-ms")
+    (flymake-mode)))
+(add-hook 'c-mode-common-hook 'ms-c-mode-common-hook 'append)
 
 ;; Messaging Server unit test mode.
 (require 'ms-utest-mode)
+
+;; Setup flymake mask for C and C++ sources to use Makefile.
+(push '("/msg/.*\\.\\(?:c\\(?:pp\\|xx\\|\\+\\+\\)?\\|CC\\)$"
+        flymake-simple-make-init) flymake-allowed-file-name-masks)
+(push '("/msg/.*\\.\\(?:h\\(?:pp\\|xx\\|\\+\\+\\)?\\|HH\\)$"
+        flymake-simple-make-init) flymake-allowed-file-name-masks)
 
 ;; Print number of literals in region. This takes the 'C: ' prefix in
 ;; the utest.txt into account. To count, select the region beginning

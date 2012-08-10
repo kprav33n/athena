@@ -142,4 +142,9 @@
 (require 'projectile)
 (projectile-global-mode)
 
+;; Flymake.
+(require 'flymake)
+(setq flymake-gui-warnings-enabled t)
+
+
 (provide 'athena-programming)
