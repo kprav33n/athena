@@ -13,8 +13,26 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-;; Guess style from the current code.
-(add-hook 'c-mode-common-hook 'guess-style-guess-all 'append)
+;; Use c++-mode for .h files.
+(add-to-list 'auto-mode-alist (cons (purecopy "\\.h$") 'c++-mode))
+
+;; UCS MS C/C++ style.
+(c-add-style
+ "oracle-ucs-ms"
+ '((indent-tabs-mode . nil)
+   (fill-column . 75)
+   (c-basic-offset . 4)
+   (c-hanging-colons-alist . ((access-label after)))
+   (c-offsets-alist . ((innamespace . 0)
+                       (member-init-intro . ++)
+                       ))))
+
+;; For msg source, use UCS MS style.
+(defun oracle-ucs-ms-style-hook ()
+  (when (and buffer-file-name
+             (string-match "/msg/" buffer-file-name))
+    (c-set-style "oracle-ucs-ms")))
+(add-hook 'c-mode-common-hook 'oracle-ucs-ms-style-hook 'append)
 
 ;; Messaging Server unit test mode.
 (require 'ms-utest-mode)
