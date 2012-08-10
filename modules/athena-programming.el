@@ -79,6 +79,9 @@
 (require 'doc-mode)
 (add-hook 'c-mode-common-hook 'doc-mode)
 
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist (cons (purecopy "\\.y[a]*ml$") 'yaml-mode))
+
 ;; ;; ECB.
 ;; (require 'ecb)
 
@@ -134,5 +137,9 @@
 ;; Markdown mode.
 (require 'markdown-mode)
 (add-to-list 'auto-mode-alist (cons (purecopy "\\.markdown$") 'markdown-mode))
+
+;; Projectile.
+(require 'projectile)
+(projectile-global-mode)
 
 (provide 'athena-programming)
