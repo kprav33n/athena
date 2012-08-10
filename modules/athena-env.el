@@ -23,7 +23,24 @@
   (when (string-match "^MANPATH=\"\\(.*\\)\"; export MANPATH;$" path_helper_output)
     (setenv "MANPATH" (match-string 1 path_helper_output))))
 
+(defun restore-exec-path-to-standard-value ()
+  (let* ((standard-path (get 'exec-path 'standard-value)))
+    (setq exec-path (and (consp standard-path)
+                         (condition-case nil
+                             (eval (car standard-path)))))))
+
+(defun set-exec-path-from-shell-PATH ()
+  "Sets the exec-path to the same value used by the user shell"
+  (let ((path-from-shell
+         (replace-regexp-in-string
+          "[[:space:]\n]*$" ""
+          (shell-command-to-string "$SHELL -l -c 'echo $PATH'"))))
+    (setenv "PATH" path-from-shell)
+    (setq exec-path (split-string path-from-shell path-separator))))
+
 (if (eq system-type 'darwin)
-    (setenv-from-path-helper))
+    (progn
+      (setenv-from-path-helper)
+      (set-exec-path-from-shell-PATH)))
 
 (provide 'athena-env)
