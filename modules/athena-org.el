@@ -77,4 +77,8 @@
                  (not (string= lang "plantuml"))))
 (setq org-confirm-babel-evaluate 'my-org-confirm-babel-evaluate)
 
+(require 'org-latex)
+(setq org-export-latex-listings 'minted)
+(add-to-list 'org-export-latex-packages-alist '("" "minted"))
+
 (provide 'athena-org)
