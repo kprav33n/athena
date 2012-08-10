@@ -144,7 +144,7 @@
 
 ;; Flymake.
 (require 'flymake)
-(setq flymake-gui-warnings-enabled t)
+(setq flymake-gui-warnings-enabled nil)
 
 
 (provide 'athena-programming)
