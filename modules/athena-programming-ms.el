@@ -24,6 +24,7 @@
    (c-basic-offset . 4)
    (c-hanging-colons-alist . ((access-label after)))
    (c-offsets-alist . ((innamespace . 0)
+                       (inextern-lang . 0)
                        (member-init-intro . ++)
                        ))))
 
