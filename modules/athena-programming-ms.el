@@ -22,9 +22,10 @@
  '((indent-tabs-mode . nil)
    (fill-column . 75)
    (c-basic-offset . 4)
-   (c-hanging-colons-alist . ((access-label after)))
-   (c-offsets-alist . ((innamespace . 0)
+   (c-offsets-alist . (
+                       (access-label . /)
                        (inextern-lang . 0)
+                       (innamespace . 0)
                        (member-init-intro . ++)
                        ))))
 
