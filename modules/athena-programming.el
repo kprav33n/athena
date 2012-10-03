@@ -13,6 +13,15 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+;; Tabs are evil.
+(setq-default indent-tabs-mode nil)
+
+;; Compilation mode settings.
+;; Automatically scroll compile buffer until the first error.
+(setq compilation-scroll-output 'first-error)
+;; Ignore warnings.
+(setq compilation-skip-threshold 2)
+
 ;; ;; Semantic.
 ;; (setq semantic-default-submodes
 ;;         '(global-semanticdb-minor-mode
@@ -37,38 +46,29 @@
 ;; ;; Due to an auto-complete-mode bug.
 ;; (require 'help-mode)
 
-
-;; Tabs are evil.
-(setq-default indent-tabs-mode nil)
-
 ;; Whitespace mode.
 (require 'whitespace)
 (setq whitespace-style '(face lines-tail tab-mark trailing))
 (setq whitespace-global-modes '(c-mode c++-mode java-mode emacs-lisp-mode))
 (global-whitespace-mode t)
 
-
 ;; YASnippet.
 (require 'yasnippet)
 (yas/initialize)
 (yas/load-directory (concat athena-root-dir "data/yasnippet/snippets"))
 
-
 ;; aHg - Mercurial frontend.
 (require 'cl)
 (require 'ahg)
-
 
 ;; GNU Global.
 (setq gtags-suggested-key-mapping t)
 (require 'gtags)
 (add-hook 'c-mode-common-hook 'gtags-mode)
 
-
 ;; Automagically pair braces and quotes like TextMate.
 (require 'autopair)
 (autopair-global-mode)
-
 
 ;; Drag stuff.
 (require 'drag-stuff)
@@ -79,51 +79,9 @@
 (require 'doc-mode)
 (add-hook 'c-mode-common-hook 'doc-mode)
 
+;; YAML mode.
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist (cons (purecopy "\\.y[a]*ml$") 'yaml-mode))
-
-;; ;; ECB.
-;; (require 'ecb)
-
-;; ;; Split root window.
-;; (require 'split-root)
-
-
-;; ;; Tweak default compilation output behavior.
-;; (require 'compile)
-;; ;; Scroll the compilation window automatically.
-;; (defvar compilation-window nil
-;;   "The window opened for displaying a compilation buffer.")
-;; (setq compilation-window-height 14)
-(setq compilation-scroll-output t)
-
-;; (defun athena-display-buffer (buffer &optional not-this-window)
-;;   (if (or (compilation-buffer-p buffer)
-;;           (equal (buffer-name buffer) "*Shell Command Output*"))
-;;       (unless (and compilation-window (window-live-p compilation-window))
-;;         (setq compilation-window (split-root-window compilation-window-height))
-;;         (set-window-buffer compilation-window buffer))
-;;     (let ((display-buffer-function nil))
-;;       (display-buffer buffer not-this-window))))
-
-;; (setq display-buffer-function 'athena-display-buffer)
-
-;; ;; on success, delete compilation window right away!
-;; (add-hook 'compilation-finish-functions
-;;           '(lambda(buf res)
-;;              (unless (or (eq last-command 'grep)
-;;                          (eq last-command 'grep-find))
-;;                (when (equal res "finished\n")
-;;                  (when compilation-window
-;;                    (delete-window compilation-window)
-;;                    (setq compilation-window nil))
-;;                  (message "compilation successful")))))
-
-
-;; Spell check comments.
-(add-hook 'c-mode-common-hook
-          (lambda ()
-            (flyspell-prog-mode)))
 
 ;; Google C/C++ style.
 (require 'google-c-style)
