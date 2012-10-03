@@ -23,9 +23,6 @@
 ;; Turn off tool bar.
 (tool-bar-mode 0)
 
-;; Turn off scroll bar.
-(scroll-bar-mode 0)
-
 ;; Show matching parenthesis.
 (show-paren-mode 1)
 
@@ -38,6 +35,9 @@
 ;; Easy file and buffer name completion.
 (ido-mode 1)
 (setq ido-enable-flex-matching t)
+
+;; Highlight current line.
+(global-hl-line-mode)
 
 ;; Show column number in the mode line.
 (column-number-mode 1)
@@ -56,18 +56,13 @@
 (setq uniquify-buffer-name-style 'post-forward)
 (setq uniquify-after-kill-buffer-p t)
 
-(if (= emacs-major-version 24)
-    (progn
-      (load-theme 'solarized-dark t))
-  (progn
-    (require 'color-theme)
-    (require 'color-theme-zenburn)
-    (color-theme-zenburn)))
-
 ;; Spell checker.
 (setq ispell-program-name "aspell")
 
 ;; Save minibuffer history.
 (savehist-mode 1)
+
+;; Full screen on Mac.
+(global-set-key (kbd "s-f") 'ns-toggle-fullscreen)
 
 (provide 'athena-ui)
