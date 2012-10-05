@@ -1,8 +1,0 @@
-# -*- mode: snippet -*-
-# name: Header guard
-# key: once
-# --
-#ifndef ${1:`(replace-regexp-in-string (rx ".") "_" (upcase (file-name-nondirectory (buffer-file-name))))`}
-#define $1
-$0
-#endif // $1

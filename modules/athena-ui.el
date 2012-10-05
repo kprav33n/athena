@@ -36,14 +36,8 @@
 (ido-mode 1)
 (setq ido-enable-flex-matching t)
 
-;; Highlight current line.
-(global-hl-line-mode)
-
 ;; Show column number in the mode line.
 (column-number-mode 1)
-
-;; Show file size in the mode line.
-(size-indication-mode 1)
 
 ;; Y/N in place of Yes/No answers.
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -62,7 +56,16 @@
 ;; Save minibuffer history.
 (savehist-mode 1)
 
+;; Helm.
+(require 'helm)
+(global-set-key (kbd "C-c h") 'helm-mini)
+
 ;; Full screen on Mac.
 (global-set-key (kbd "s-f") 'ns-toggle-fullscreen)
+
+;; Auto complete.
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+(ac-config-default)
 
 (provide 'athena-ui)

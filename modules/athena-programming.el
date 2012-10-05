@@ -49,35 +49,28 @@
 ;; Whitespace mode.
 (require 'whitespace)
 (setq whitespace-style '(face lines-tail tab-mark trailing))
-(setq whitespace-global-modes '(c-mode c++-mode java-mode emacs-lisp-mode))
+(setq whitespace-global-modes '(
+                                c++-mode
+                                c-mode
+                                emacs-lisp-mode
+                                java-mode
+                                python-mode
+                                ))
 (global-whitespace-mode t)
 
 ;; YASnippet.
 (require 'yasnippet)
-(yas/initialize)
-(yas/load-directory (concat athena-root-dir "data/yasnippet/snippets"))
+(setq yas/snippet-dirs `(,(concat user-emacs-directory "snippets")))
+(yas/global-mode 1)
 
-;; aHg - Mercurial frontend.
-(require 'cl)
-(require 'ahg)
-
-;; GNU Global.
-(setq gtags-suggested-key-mapping t)
-(require 'gtags)
-(add-hook 'c-mode-common-hook 'gtags-mode)
-
-;; Automagically pair braces and quotes like TextMate.
-(require 'autopair)
-(autopair-global-mode)
+;; Helm.
+(require 'helm-c-yasnippet)
+(global-set-key (kbd "C-c y") 'helm-c-yas-complete)
 
 ;; Drag stuff.
 (require 'drag-stuff)
 (add-to-list 'drag-stuff-except-modes 'org-mode)
 (drag-stuff-global-mode 1)
-
-;; Doc-mode for Doxygen comments.
-(require 'doc-mode)
-(add-hook 'c-mode-common-hook 'doc-mode)
 
 ;; YAML mode.
 (require 'yaml-mode)
@@ -88,10 +81,6 @@
 (add-hook 'c-mode-common-hook 'google-set-c-style)
 (add-hook 'c-mode-common-hook 'google-make-newline-indent)
 
-;; CMake mode.
-(require 'cmake-mode)
-(add-to-list 'auto-mode-alist (cons (purecopy "CMakeLists.txt") 'cmake-mode))
-
 ;; Markdown mode.
 (require 'markdown-mode)
 (add-to-list 'auto-mode-alist (cons (purecopy "\\.markdown$") 'markdown-mode))
@@ -100,9 +89,23 @@
 (require 'projectile)
 (projectile-global-mode)
 
+;; Helm.
+(require 'helm-projectile)
+
 ;; Flymake.
 (require 'flymake)
 (setq flymake-gui-warnings-enabled nil)
 
+;; Helm gtags.
+(require 'helm-gtags)
+(add-hook 'helm-gtags-mode-hook
+          '(lambda ()
+             (local-set-key (kbd "C-c g t") 'helm-gtags-find-tag)
+             (local-set-key (kbd "C-c g r") 'helm-gtags-find-rtag)
+             (local-set-key (kbd "C-c g s") 'helm-gtags-find-symbol)
+             (local-set-key (kbd "C-c g p") 'helm-gtags-pop-stack)
+             (local-set-key (kbd "C-c g f") 'helm-gtags-find-files)
+             (local-set-key (kbd "C-c g h") 'helm-gtags-select)))
+(add-hook 'c-mode-common-hook 'helm-gtags-mode)
 
 (provide 'athena-programming)

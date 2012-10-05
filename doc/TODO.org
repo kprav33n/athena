@@ -1,0 +1,5 @@
+- Setup paredit
+- Setup ac-clang
+- Setup cedet
+- Setup ahg
+

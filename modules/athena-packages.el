@@ -13,26 +13,36 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+;; Common lisp.
+(require 'cl)
+
 ;; Emacs Lisp Package Archive.
 (require 'package)
-;; Configure package archives.
 (add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/") 'append)
-(add-to-list 'package-archives
-             '("ELPA" . "http://tromey.com/elpa/") 'append)
-(add-to-list 'package-archives
-             '("gnu" . "http://elpa.gnu.org/packages/") 'append)
-
-;; Refresh package archive contents.
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
 (when (not package-archive-contents)
   (package-refresh-contents))
 
 ;; Set of packages to install.
-(defvar athena-packages '(ahg autopair cmake-mode clojure-mode
-  color-theme color-theme-zenburn doc-mode drag-stuff ecb_snap
-  graphviz-dot-mode gtags guess-style magit markdown-mode
-  projectile org solarized-theme yaml-mode yasnippet)
+(defvar athena-packages '(
+                          auto-complete
+                          clojure-mode
+                          drag-stuff
+                          graphviz-dot-mode
+                          helm
+                          helm-c-yasnippet
+                          helm-gist
+                          helm-git
+                          helm-gtags
+                          helm-projectile
+                          magit
+                          markdown-mode
+                          melpa
+                          projectile
+                          yaml-mode
+                          yasnippet
+                          )
   "A list of packages that has to be ensured installed from package archives")
 
 ;; Install packages if not already installed.
