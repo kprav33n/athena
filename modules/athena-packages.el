@@ -29,6 +29,7 @@
                           auto-complete
                           clojure-mode
                           drag-stuff
+                          google-c-style
                           graphviz-dot-mode
                           guru-mode
                           helm
