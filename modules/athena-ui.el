@@ -68,4 +68,8 @@
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (ac-config-default)
 
+;; Use Emacs's own emulation of ls for dired.
+(setq ls-lisp-use-insert-directory-program nil)
+(require 'ls-lisp)
+
 (provide 'athena-ui)
