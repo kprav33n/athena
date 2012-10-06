@@ -30,6 +30,7 @@
                           clojure-mode
                           drag-stuff
                           graphviz-dot-mode
+                          guru-mode
                           helm
                           helm-c-yasnippet
                           helm-gist

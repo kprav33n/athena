@@ -16,9 +16,12 @@
 ;; Tabs are evil.
 (setq-default indent-tabs-mode nil)
 
-;; Turn on line numbers and highlight current line in programming
-;; modes.
-(add-hook 'prog-mode-hook (lambda () (linum-mode) (hl-line-mode)))
+;; Enable certain minor modes in programming mode.
+(add-hook 'prog-mode-hook
+          (lambda ()
+            (linum-mode)
+            (hl-line-mode)
+            (guru-mode)))
 
 ;; Compilation mode settings.
 ;; Automatically scroll compile buffer until the first error.
