@@ -39,6 +39,7 @@
                           magit
                           markdown-mode
                           melpa
+                          monky
                           projectile
                           yaml-mode
                           yasnippet
