@@ -16,13 +16,6 @@
 ;; Tabs are evil.
 (setq-default indent-tabs-mode nil)
 
-;; Enable certain minor modes in programming mode.
-(add-hook 'prog-mode-hook
-          (lambda ()
-            (linum-mode)
-            (hl-line-mode)
-            (guru-mode)))
-
 ;; Compilation mode settings.
 ;; Automatically scroll compile buffer until the first error.
 (setq compilation-scroll-output 'first-error)
