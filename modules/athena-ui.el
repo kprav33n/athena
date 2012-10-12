@@ -36,6 +36,9 @@
 (ido-mode 1)
 (setq ido-enable-flex-matching t)
 
+;; Use the selected window when switching to a buffer in ido-mode.
+(setq ido-default-buffer-method 'selected-window)
+
 ;; Show column number in the mode line.
 (column-number-mode 1)
 
@@ -71,5 +74,8 @@
 ;; Use Emacs's own emulation of ls for dired.
 (setq ls-lisp-use-insert-directory-program nil)
 (require 'ls-lisp)
+
+;; Display buffer should reuse frame.
+(setq-default display-buffer-reuse-frames t)
 
 (provide 'athena-ui)
