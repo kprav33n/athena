@@ -42,6 +42,7 @@
                           markdown-mode
                           melpa
                           monky
+                          paredit
                           projectile
                           yaml-mode
                           yasnippet

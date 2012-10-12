@@ -22,6 +22,9 @@
 ;; Ignore warnings.
 (setq compilation-skip-threshold 2)
 
+;; Paredit mode on certian major modes.
+(add-hook 'scheme-mode-hook #'paredit-mode)
+
 ;; ;; Semantic.
 ;; (setq semantic-default-submodes
 ;;         '(global-semanticdb-minor-mode
