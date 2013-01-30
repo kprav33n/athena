@@ -63,7 +63,7 @@
 
 ;; YASnippet.
 (require 'yasnippet)
-(setq yas/snippet-dirs `(,(concat user-emacs-directory "snippets")))
+(defvar yas/snippet-dirs `(,(concat user-emacs-directory "snippets")))
 (yas/global-mode 1)
 
 ;; Helm.
