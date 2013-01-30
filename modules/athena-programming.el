@@ -53,6 +53,14 @@
 ;; ;; Due to an auto-complete-mode bug.
 ;; (require 'help-mode)
 
+;; Auto complete mode.
+;; Turn off auto-complete menu.
+(setq ac-auto-show-menu nil)
+
+;; Don't ignore case in auto-complete.
+(setq ac-ignore-case nil)
+
+
 ;; Whitespace mode.
 (require 'whitespace)
 (setq whitespace-style '(face lines-tail tab-mark trailing))
