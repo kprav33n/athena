@@ -22,6 +22,10 @@
 ;; Ignore warnings.
 (setq compilation-skip-threshold 2)
 
+;; Popup window mode.
+(require 'popwin)
+(setq display-buffer-function 'popwin:display-buffer)
+
 ;; Paredit mode on certian major modes.
 (add-hook 'scheme-mode-hook #'paredit-mode)
 

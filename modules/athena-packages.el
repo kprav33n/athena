@@ -43,6 +43,7 @@
                           melpa
                           monky
                           paredit
+                          popwin
                           projectile
                           yaml-mode
                           yasnippet
