@@ -80,6 +80,10 @@
 (add-hook 'c-mode-common-hook 'google-set-c-style)
 (add-hook 'c-mode-common-hook 'google-make-newline-indent)
 
+;; Dummy H mode.
+(add-to-list 'auto-mode-alist '("\\.h$" . dummy-h-mode))
+(autoload 'dummy-h-mode "dummy-h-mode" "Dummy H mode" t)
+
 ;; Markdown mode.
 (require 'markdown-mode)
 (add-to-list 'auto-mode-alist (cons (purecopy "\\.markdown$") 'markdown-mode))

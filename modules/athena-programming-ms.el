@@ -13,9 +13,6 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-;; Use c++-mode for .h files.
-(add-to-list 'auto-mode-alist (cons (purecopy "\\.h$") 'c++-mode))
-
 ;; UCS MS C/C++ style.
 (c-add-style
  "oracle-ucs-ms"

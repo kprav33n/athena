@@ -29,6 +29,7 @@
                           auto-complete
                           clojure-mode
                           drag-stuff
+                          dummy-h-mode
                           ein
                           google-c-style
                           graphviz-dot-mode
