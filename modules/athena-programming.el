@@ -108,6 +108,8 @@
 (add-to-list 'flymake-allowed-file-name-masks
              '(".+\\.py$" flymake-pyflakes-init))
 
+;; iPython notebook support.
+(require 'ein)
 
 ;; Helm gtags.
 (require 'helm-gtags)
