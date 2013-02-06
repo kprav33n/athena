@@ -78,4 +78,11 @@
 ;; Display buffer should reuse frame.
 (setq-default display-buffer-reuse-frames t)
 
+;; Python regexp search.
+(require 'pyregexp)
+(define-key global-map (kbd "C-c r") 'pyregexp-replace)
+(define-key global-map (kbd "C-c q") 'pyregexp-query-replace)
+(define-key esc-map (kbd "C-r") 'pyregexp-isearch-backward)
+(define-key esc-map (kbd "C-s") 'pyregexp-isearch-forward)
+
 (provide 'athena-ui)

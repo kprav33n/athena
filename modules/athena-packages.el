@@ -47,6 +47,7 @@
                           paredit
                           popwin
                           projectile
+                          pyregexp
                           yaml-mode
                           yasnippet
                           )
