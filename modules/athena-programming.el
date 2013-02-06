@@ -22,6 +22,10 @@
 ;; Ignore warnings.
 (setq compilation-skip-threshold 2)
 
+;; Easy recompile.
+(global-set-key (kbd "M-g r") 'recompile)
+(global-set-key (kbd "M-g M-r") 'recompile)
+
 ;; Popup window mode.
 (require 'popwin)
 (setq display-buffer-function 'popwin:display-buffer)
