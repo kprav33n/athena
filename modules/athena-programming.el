@@ -127,4 +127,9 @@
              (local-set-key (kbd "C-c g h") 'helm-gtags-select)))
 (add-hook 'c-mode-common-hook 'helm-gtags-mode)
 
+;; The silver searcher.
+(require 'ag)
+(setq ag-arguments
+      (list "--color" "--smart-case" "--nogroup" "--column" "--"))
+
 (provide 'athena-programming)

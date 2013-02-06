@@ -26,6 +26,7 @@
 
 ;; Set of packages to install.
 (defvar athena-packages '(
+                          ag
                           auto-complete
                           clojure-mode
                           drag-stuff
