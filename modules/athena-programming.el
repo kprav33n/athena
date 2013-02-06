@@ -33,31 +33,11 @@
 ;; Paredit mode on certian major modes.
 (add-hook 'scheme-mode-hook #'paredit-mode)
 
-;; ;; Semantic.
-;; (setq semantic-default-submodes
-;;         '(global-semanticdb-minor-mode
-;;           global-semantic-idle-scheduler-mode
-;;           global-semantic-idle-summary-mode
-;;           global-semantic-idle-completions-mode
-;;           global-semantic-decoration-mode
-;;           global-semantic-highlight-func-mode
-;;           global-semantic-stickyfunc-mode))
-;; (semantic-mode 1)
-
-
-;; ;; Auto complete mode.
-;; (add-to-list 'load-path (concat user-emacs-directory "site/auto-complete"))
-;; (require 'auto-complete-config)
-;; (add-to-list 'ac-dictionary-directories
-;; 	     (concat user-emacs-directory "ac-dict"))
-;; (ac-config-default)
-;; (defun ac-c-mode-common-setup ()
-;;   (add-to-list 'ac-sources 'ac-source-semantic))
-;; (add-hook 'c-mode-common-hook 'ac-c-mode-common-setup)
-;; ;; Due to an auto-complete-mode bug.
-;; (require 'help-mode)
 
 ;; Auto complete mode.
+(require 'auto-complete-config)
+(ac-config-default)
+
 ;; Turn off auto-complete menu.
 (setq ac-auto-show-menu nil)
 
