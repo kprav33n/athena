@@ -21,8 +21,19 @@
 
 ;; Populate the load-path.
 (add-to-list 'load-path athena-modules-dir)
-(add-to-list 'load-path athena-external-lisp-dir)
 (add-to-list 'load-path athena-custom-lisp-dir)
+
+;; Add subdirectories to load-path.
+(defun athena-add-subdirectories-to-load-path (dir)
+  "Adds all toplevel subdirectories to load-path"
+  (dolist (file (directory-files dir))
+    (let ((name (expand-file-name file dir)))
+      (when (and (file-directory-p name)
+                 (not (equal file ".."))
+                 (not (equal file ".")))
+        (add-to-list 'load-path name)))))
+
+(athena-add-subdirectories-to-load-path athena-external-lisp-dir)
 
 ;; Load athena modules.
 (require 'athena-env)
