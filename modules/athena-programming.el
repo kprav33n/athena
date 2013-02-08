@@ -16,6 +16,9 @@
 ;; Tabs are evil.
 (setq-default indent-tabs-mode nil)
 
+;; Turn on line numbers.
+(add-hook 'prog-mode-hook #'linum-mode)
+
 ;; Paredit mode on certian major modes.
 (add-hook 'scheme-mode-hook #'paredit-mode)
 

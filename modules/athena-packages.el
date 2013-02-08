@@ -29,6 +29,7 @@
                           ag
                           auto-complete
                           clojure-mode
+                          color-theme-solarized
                           drag-stuff
                           dummy-h-mode
                           ein

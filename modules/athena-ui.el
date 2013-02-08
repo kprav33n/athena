@@ -23,6 +23,9 @@
 ;; Turn off tool bar.
 (tool-bar-mode 0)
 
+;; Turn off scroll bar.
+(scroll-bar-mode 0)
+
 ;; Show matching parenthesis.
 (show-paren-mode 1)
 
@@ -84,5 +87,8 @@
 (define-key global-map (kbd "C-c q") 'pyregexp-query-replace)
 (define-key esc-map (kbd "C-r") 'pyregexp-isearch-backward)
 (define-key esc-map (kbd "C-s") 'pyregexp-isearch-forward)
+
+;; Solarized color theme.
+(load-theme 'solarized-light t)
 
 (provide 'athena-ui)
