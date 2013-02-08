@@ -19,6 +19,7 @@
 (defvar athena-external-lisp-dir (concat athena-root-dir "external-lisp/"))
 (defvar athena-custom-lisp-dir (concat athena-root-dir "custom-lisp/"))
 (defvar athena-personal-dir (concat athena-root-dir "personal/"))
+(defvar athena-personal-preload-dir (concat athena-root-dir "personal/preload/"))
 
 ;; Populate the load-path.
 (add-to-list 'load-path athena-modules-dir)
@@ -36,14 +37,21 @@
 
 (athena-add-subdirectories-to-load-path athena-external-lisp-dir)
 
+;; Load *.el in the given directory.
+(defun athena-load-files-from-directory (dir)
+  "Load *.el files from the given directory"
+  (when (file-exists-p dir)
+    (mapc 'load (directory-files dir 't "^[^#].*el$"))))
+
+;; Preload personal lisp files.
+(athena-load-files-from-directory athena-personal-preload-dir)
+
 ;; Load athena modules.
 (require 'athena-env)
 (require 'athena-packages)
 (require 'athena-ui)
 (require 'athena-programming)
-(require 'athena-programming-ms)
 (require 'athena-org)
 
 ;; Load personal lisp files.
-(when (file-exists-p athena-personal-dir)
-  (mapc 'load (directory-files athena-personal-dir 't "^[^#].el$")))
+(athena-load-files-from-directory athena-personal-dir)

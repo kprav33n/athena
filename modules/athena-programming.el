@@ -16,6 +16,9 @@
 ;; Tabs are evil.
 (setq-default indent-tabs-mode nil)
 
+;; Paredit mode on certian major modes.
+(add-hook 'scheme-mode-hook #'paredit-mode)
+
 ;; Compilation mode settings.
 ;; Automatically scroll compile buffer until the first error.
 (setq compilation-scroll-output 'first-error)
@@ -30,8 +33,37 @@
 (require 'popwin)
 (setq display-buffer-function 'popwin:display-buffer)
 
-;; Paredit mode on certian major modes.
-(add-hook 'scheme-mode-hook #'paredit-mode)
+
+;;; CEDET.
+
+;; Add further minor-modes to be enabled by semantic-mode.
+(add-to-list 'semantic-default-submodes 'global-semantic-idle-summary-mode)
+(add-to-list 'semantic-default-submodes 'global-semantic-idle-completions-mode)
+(add-to-list 'semantic-default-submodes 'global-semantic-highlight-func-mode)
+(add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
+(add-to-list 'semantic-default-submodes 'global-cedet-m3-minor-mode)
+(add-to-list 'semantic-default-submodes 'global-semantic-idle-local-symbol-highlight-mode)
+
+;; Enable Semantic
+(semantic-mode 1)
+
+;; Advanced name completion.
+(require 'semantic/ia)
+
+;; Automatically find system headers.
+(require 'semantic/bovine/gcc)
+
+;; GNU Global support.
+(when (and (fboundp 'cedet-gnu-global-version-check)
+           (cedet-gnu-global-version-check t))
+  (semanticdb-enable-gnu-global-databases 'c-mode)
+  (semanticdb-enable-gnu-global-databases 'c++-mode))
+
+(add-hook 'c-mode-common-hook
+          (lambda () (add-to-list 'ac-sources 'ac-source-semantic)))
+
+;; Enable EDE (Project Management) features.
+(global-ede-mode 1)
 
 
 ;; Auto complete mode.
