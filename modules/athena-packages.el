@@ -34,6 +34,7 @@
                           dummy-h-mode
                           ecb
                           ein
+                          flymake-python-pyflakes
                           google-c-style
                           graphviz-dot-mode
                           guru-mode
@@ -43,6 +44,7 @@
                           helm-git
                           helm-gtags
                           helm-projectile
+                          highlight-indentation
                           magit
                           markdown-mode
                           melpa
@@ -50,6 +52,7 @@
                           paredit
                           popwin
                           projectile
+                          python
                           pyregexp
                           yaml-mode
                           yasnippet
