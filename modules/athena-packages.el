@@ -32,6 +32,7 @@
                           color-theme-solarized
                           drag-stuff
                           dummy-h-mode
+                          ecb
                           ein
                           google-c-style
                           graphviz-dot-mode

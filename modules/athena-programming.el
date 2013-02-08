@@ -43,7 +43,7 @@
 (add-to-list 'semantic-default-submodes 'global-semantic-idle-summary-mode)
 (add-to-list 'semantic-default-submodes 'global-semantic-idle-completions-mode)
 (add-to-list 'semantic-default-submodes 'global-semantic-highlight-func-mode)
-(add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
+;;(add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
 (add-to-list 'semantic-default-submodes 'global-cedet-m3-minor-mode)
 (add-to-list 'semantic-default-submodes 'global-semantic-idle-local-symbol-highlight-mode)
 
@@ -67,6 +67,10 @@
 
 ;; Enable EDE (Project Management) features.
 (global-ede-mode 1)
+
+
+;;; ECB.
+(require 'ecb)
 
 
 ;; Auto complete mode.
