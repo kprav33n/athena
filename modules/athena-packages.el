@@ -53,7 +53,6 @@
                           paredit
                           popwin
                           projectile
-                          python
                           pyregexp
                           yaml-mode
                           yasnippet
