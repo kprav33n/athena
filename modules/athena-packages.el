@@ -45,6 +45,7 @@
                           helm-gtags
                           helm-projectile
                           highlight-indentation
+                          jedi
                           magit
                           markdown-mode
                           melpa
