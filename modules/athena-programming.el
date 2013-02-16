@@ -73,6 +73,11 @@
 (require 'ecb)
 
 
+;;; Pymacs
+(require 'pymacs)
+(pymacs-load "ropemacs" "rope-")
+
+
 ;;; Jedi.
 (add-hook 'python-mode-hook 'jedi:setup)
 (add-hook 'python-mode-hook 'jedi:ac-setup)
