@@ -62,8 +62,11 @@
   (semanticdb-enable-gnu-global-databases 'c-mode)
   (semanticdb-enable-gnu-global-databases 'c++-mode))
 
-(add-hook 'c-mode-common-hook
-          (lambda () (add-to-list 'ac-sources 'ac-source-semantic)))
+;; FIXME (2013-02-19, praveen): This is causing Emacs to hang when
+;; typing 'std::'
+
+;; (add-hook 'c-mode-common-hook (lambda () (add-to-list
+;;'ac-sources 'ac-source-semantic)))
 
 ;; Enable EDE (Project Management) features.
 (global-ede-mode 1)
