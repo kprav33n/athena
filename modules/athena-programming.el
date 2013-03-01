@@ -42,11 +42,10 @@
 
 ;; Add further minor-modes to be enabled by semantic-mode.
 (add-to-list 'semantic-default-submodes 'global-semantic-idle-summary-mode)
-(add-to-list 'semantic-default-submodes 'global-semantic-idle-completions-mode)
 (add-to-list 'semantic-default-submodes 'global-semantic-highlight-func-mode)
-;;(add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
-(add-to-list 'semantic-default-submodes 'global-cedet-m3-minor-mode)
-(add-to-list 'semantic-default-submodes 'global-semantic-idle-local-symbol-highlight-mode)
+(add-to-list 'semantic-default-submodes 'global-semantic-decoration-mode)
+(add-to-list 'semantic-default-submodes
+             'global-semantic-idle-local-symbol-highlight-mode)
 
 ;; Enable Semantic
 (semantic-mode 1)
@@ -66,8 +65,9 @@
 ;; FIXME (2013-02-19, praveen): This is causing Emacs to hang when
 ;; typing 'std::'
 
-;; (add-hook 'c-mode-common-hook (lambda () (add-to-list
-;;'ac-sources 'ac-source-semantic)))
+;; (add-hook 'c-mode-common-hook
+;;           (lambda ()
+;;             (add-to-list 'ac-sources 'ac-source-semantic)))
 
 ;; Enable EDE (Project Management) features.
 (global-ede-mode 1)
@@ -82,17 +82,22 @@
 (pymacs-load "ropemacs" "rope-")
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Jedi.
 (add-hook 'python-mode-hook 'jedi:setup)
 (add-hook 'python-mode-hook 'jedi:ac-setup)
 (setq jedi:setup-keys t)
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Whitespace mode.
 (require 'whitespace)
-(setq whitespace-style '(empty face lines-tail tab-mark trailing))
+(setq whitespace-style '(face lines-tail tab-mark trailing))
+;; FIXME (2013-03-01, praveen): empty line visualization badly affects
+;; auto-complete-mode.
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Auto complete mode.
 (require 'auto-complete-config)
 (ac-config-default)
@@ -106,13 +111,9 @@
 ;; Make auto-complete play well with linum-mode.
 (ac-linum-workaround)
 
-;; Make auto-complete play well with whitespace-mode.
-(defadvice whitespace-post-command-hook (around ac-whitespace-workaround activate)
-  (unless ac-completing
-    ad-do-it))
 
-
-;; YASnippet.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; YASnippet.
 (require 'yasnippet)
 (defvar yas/snippet-dirs `(,(concat user-emacs-directory "snippets")))
 (yas/global-mode 1)
