@@ -18,6 +18,7 @@
 
 ;; Turn on line numbers.
 (add-hook 'prog-mode-hook #'linum-mode)
+(add-hook 'prog-mode-hook #'whitespace-mode)
 
 ;; Paredit mode on certian major modes.
 (add-hook 'scheme-mode-hook #'paredit-mode)
@@ -87,28 +88,29 @@
 (setq jedi:setup-keys t)
 
 
-;; Auto complete mode.
+;;; Whitespace mode.
+(require 'whitespace)
+(setq whitespace-style '(empty face lines-tail tab-mark trailing))
+
+
+;;; Auto complete mode.
 (require 'auto-complete-config)
 (ac-config-default)
 
 ;; Turn off auto-complete menu.
-(setq ac-auto-show-menu nil)
+;(setq ac-auto-show-menu nil)
 
 ;; Don't ignore case in auto-complete.
 (setq ac-ignore-case nil)
 
+;; Make auto-complete play well with linum-mode.
+(ac-linum-workaround)
 
-;; Whitespace mode.
-(require 'whitespace)
-(setq whitespace-style '(face lines-tail tab-mark trailing))
-(setq whitespace-global-modes '(
-                                c++-mode
-                                c-mode
-                                emacs-lisp-mode
-                                java-mode
-                                python-mode
-                                ))
-(global-whitespace-mode t)
+;; Make auto-complete play well with whitespace-mode.
+(defadvice whitespace-post-command-hook (around ac-whitespace-workaround activate)
+  (unless ac-completing
+    ad-do-it))
+
 
 ;; YASnippet.
 (require 'yasnippet)
@@ -152,6 +154,7 @@
 (require 'flymake)
 (add-hook 'find-file-hook 'flymake-find-file-hook)
 (setq flymake-gui-warnings-enabled nil)
+;(setq flymake-no-changes-timeout most-positive-fixnum)
 
 (require 'flymake-python-pyflakes)
 (add-hook 'python-mode-hook 'flymake-python-pyflakes-load)
