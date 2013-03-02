@@ -50,6 +50,9 @@
 ;; Enable Semantic
 (semantic-mode 1)
 
+;; Turn of idle completions mode.
+(global-semantic-idle-completions-mode -1)
+
 ;; Advanced name completion.
 (require 'semantic/ia)
 
