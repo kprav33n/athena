@@ -121,6 +121,11 @@
 (defvar yas/snippet-dirs `(,(concat user-emacs-directory "snippets")))
 (yas/global-mode 1)
 
+;; Cleanup whitespace in YASnippet expansions.
+(add-hook 'yas-after-exit-snippet-hook
+          '(lambda ()
+             (whitespace-cleanup-region yas-snippet-beg yas-snippet-end)))
+
 ;; Helm.
 (require 'helm-c-yasnippet)
 (global-set-key (kbd "C-c y") 'helm-c-yas-complete)
