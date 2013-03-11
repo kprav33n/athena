@@ -38,32 +38,32 @@
 (setq display-buffer-function 'popwin:display-buffer)
 
 
-;; ;;; CEDET.
+;;; CEDET.
 
-;; ;; Add further minor-modes to be enabled by semantic-mode.
-;; (add-to-list 'semantic-default-submodes 'global-semantic-idle-summary-mode)
-;; (add-to-list 'semantic-default-submodes 'global-semantic-highlight-func-mode)
-;; (add-to-list 'semantic-default-submodes 'global-semantic-decoration-mode)
-;; (add-to-list 'semantic-default-submodes
-;;              'global-semantic-idle-local-symbol-highlight-mode)
+;; Add further minor-modes to be enabled by semantic-mode.
+(add-to-list 'semantic-default-submodes 'global-semantic-idle-summary-mode)
+(add-to-list 'semantic-default-submodes 'global-semantic-highlight-func-mode)
+(add-to-list 'semantic-default-submodes 'global-semantic-decoration-mode)
+(add-to-list 'semantic-default-submodes
+             'global-semantic-idle-local-symbol-highlight-mode)
 
-;; ;; Enable Semantic
-;; (semantic-mode 1)
+;; Enable Semantic
+(semantic-mode 1)
 
-;; ;; Turn of idle completions mode.
-;; (global-semantic-idle-completions-mode -1)
+;; Turn of idle completions mode.
+(global-semantic-idle-completions-mode -1)
 
-;; ;; Advanced name completion.
-;; (require 'semantic/ia)
+;; Advanced name completion.
+(require 'semantic/ia)
 
-;; ;; Automatically find system headers.
-;; (require 'semantic/bovine/gcc)
+;; Automatically find system headers.
+(require 'semantic/bovine/gcc)
 
-;; ;; GNU Global support.
-;; (when (and (fboundp 'cedet-gnu-global-version-check)
-;;            (cedet-gnu-global-version-check t))
-;;   (semanticdb-enable-gnu-global-databases 'c-mode)
-;;   (semanticdb-enable-gnu-global-databases 'c++-mode))
+;; GNU Global support.
+(when (and (fboundp 'cedet-gnu-global-version-check)
+           (cedet-gnu-global-version-check t))
+  (semanticdb-enable-gnu-global-databases 'c-mode)
+  (semanticdb-enable-gnu-global-databases 'c++-mode))
 
 ;; ;; FIXME (2013-02-19, praveen): This is causing Emacs to hang when
 ;; ;; typing 'std::'
