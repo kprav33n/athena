@@ -114,6 +114,12 @@
 ;; Make auto-complete play well with linum-mode.
 (ac-linum-workaround)
 
+;; TAB key behavior in auto complete mode.
+(define-key ac-completing-map "\t" nil)
+(define-key ac-completing-map [tab] nil)
+(define-key ac-completing-map (kbd "C-TAB") 'ac-expand)
+(define-key ac-completing-map (kbd "M-/") 'ac-stop)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; YASnippet.
