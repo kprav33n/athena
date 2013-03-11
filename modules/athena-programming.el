@@ -18,7 +18,10 @@
 
 ;; Turn on line numbers.
 (add-hook 'prog-mode-hook #'linum-mode)
+
+;; Turn on whitespace mode.
 (add-hook 'prog-mode-hook #'whitespace-mode)
+(add-hook 'nxml-mode-hook #'whitespace-mode)
 
 ;; Paredit mode on certian major modes.
 (add-hook 'scheme-mode-hook #'paredit-mode)
