@@ -187,7 +187,10 @@
 
 ;; The silver searcher.
 (require 'ag)
-(setq ag-arguments
-      (list "--color" "--smart-case" "--nogroup" "--column" "--"))
+
+
+;; Google this.
+(require 'google-this)
+(google-this-mode 1)
 
 (provide 'athena-programming)

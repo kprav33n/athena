@@ -36,6 +36,7 @@
                           ein
                           flymake-python-pyflakes
                           google-c-style
+                          google-this
                           graphviz-dot-mode
                           guru-mode
                           helm
@@ -54,6 +55,7 @@
                           popwin
                           projectile
                           pyregexp
+                          restclient
                           yaml-mode
                           yasnippet
                           )
