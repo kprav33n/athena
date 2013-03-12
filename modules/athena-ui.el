@@ -91,4 +91,7 @@
 ;; Solarized color theme.
 (load-theme 'solarized-light t)
 
+;; Don't save backup files.
+(setq make-backup-files nil)
+
 (provide 'athena-ui)
