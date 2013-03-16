@@ -16,14 +16,12 @@
 ;; Setup directories.
 (defvar athena-root-dir (file-name-directory load-file-name))
 (defvar athena-modules-dir (concat athena-root-dir "modules/"))
-(defvar athena-external-lisp-dir (concat athena-root-dir "external-lisp/"))
-(defvar athena-custom-lisp-dir (concat athena-root-dir "custom-lisp/"))
 (defvar athena-personal-dir (concat athena-root-dir "personal/"))
 (defvar athena-personal-preload-dir (concat athena-root-dir "personal/preload/"))
+(defvar athena-vendor-dir (concat athena-root-dir "vendor/"))
 
 ;; Populate the load-path.
 (add-to-list 'load-path athena-modules-dir)
-(add-to-list 'load-path athena-custom-lisp-dir)
 
 ;; Add subdirectories to load-path.
 (defun athena-add-subdirectories-to-load-path (dir)
@@ -34,8 +32,6 @@
                  (not (equal file ".."))
                  (not (equal file ".")))
         (add-to-list 'load-path name)))))
-
-(athena-add-subdirectories-to-load-path athena-external-lisp-dir)
 
 ;; Load *.el in the given directory.
 (defun athena-load-files-from-directory (dir)

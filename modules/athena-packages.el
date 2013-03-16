@@ -65,6 +65,10 @@
 ;; Install packages if not already installed.
 (dolist (p athena-packages)
   (when (not (package-installed-p p))
+    (package-refresh-contents)
     (package-install p)))
+
+;; Load path to external packages that aren't installed via melpa.
+(athena-add-subdirectories-to-load-path athena-vendor-dir)
 
 (provide 'athena-packages)

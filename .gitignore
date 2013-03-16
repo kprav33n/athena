@@ -1,4 +1,4 @@
 *~
 *.elc
-external-lisp
 personal
+vendor
