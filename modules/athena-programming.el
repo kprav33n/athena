@@ -202,4 +202,8 @@
 (require 'google-this)
 (google-this-mode 1)
 
+;; Helm ls git
+(require 'helm-ls-git)
+(global-set-key (kbd "C-c g l") 'helm-ls-git-ls)
+
 (provide 'athena-programming)

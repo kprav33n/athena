@@ -44,6 +44,7 @@
                           helm-gist
                           helm-git
                           helm-gtags
+                          helm-ls-git
                           helm-projectile
                           highlight-indentation
                           jedi
