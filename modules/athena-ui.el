@@ -90,7 +90,7 @@
 
 ;; Solarized color theme.
 (if (display-graphic-p)
-    (load-theme 'solarized-dark t))
+    (load-theme 'solarized-light t))
 
 ;; Don't save backup files.
 (setq make-backup-files nil)
