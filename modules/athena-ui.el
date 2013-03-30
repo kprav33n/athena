@@ -14,8 +14,14 @@
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ;; Default font.
-(if (eq system-type 'darwin)
-    (setq default-frame-alist '((font . "Monaco 13"))))
+(cond ((eq system-type 'darwin)
+       (setq default-frame-alist '((font . "Monaco 13"))))
+      ((eq system-type 'gnu/linux)
+       (setq default-frame-alist '((font . "Monaco for Powerline 10")))))
+
+;; Alt is meta.
+(if (eq system-type 'gnu/linux)
+    (setq x-alt-keysym 'meta))
 
 ;; Inhibit startup message.
 (setq inhibit-startup-screen 't)
