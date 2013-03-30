@@ -72,7 +72,7 @@
 
 (require 'ob-plantuml)
 (setq org-plantuml-jar-path
-      (concat user-emacs-directory "elpa/contrib/scripts/plantuml.jar"))
+      (concat user-emacs-directory "bin/plantuml.jar"))
 
 (defun my-org-confirm-babel-evaluate (lang body)
             (and (not (string= lang "ditaa"))
