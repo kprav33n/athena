@@ -34,7 +34,7 @@
                           dummy-h-mode
                           ecb
                           ein
-                          flymake-python-pyflakes
+                          flycheck
                           google-c-style
                           google-this
                           graphviz-dot-mode

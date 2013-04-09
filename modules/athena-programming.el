@@ -168,15 +168,15 @@
 ;; Helm.
 (require 'helm-projectile)
 
-;; Flymake.
+;; Flymake.  TODO (2013-04-02, praveen): Remove flymake once flycheck
+;; is configured for all use cases.
 (require 'flymake)
-(add-hook 'find-file-hook 'flymake-find-file-hook)
 (setq flymake-gui-warnings-enabled nil)
-;(setq flymake-no-changes-timeout most-positive-fixnum)
 
-(require 'flymake-python-pyflakes)
-(add-hook 'python-mode-hook 'flymake-python-pyflakes-load)
-(setq flymake-python-pyflakes-executable "flake8")
+
+;;; flycheck
+(add-hook 'prog-mode-hook 'flycheck-mode)
+(add-hook 'text-mode-hook 'flycheck-mode)
 
 
 ;; iPython notebook support.
