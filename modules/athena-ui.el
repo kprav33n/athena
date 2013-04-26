@@ -14,10 +14,13 @@
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ;; Default font.
+
+;;; Code:
+
 (cond ((eq system-type 'darwin)
-       (setq default-frame-alist '((font . "Monaco 13"))))
+       (setq default-frame-alist '((font . "Monaco 14"))))
       ((eq system-type 'gnu/linux)
-       (setq default-frame-alist '((font . "Monaco for Powerline 10")))))
+       (setq default-frame-alist '((font . "Monaco for Powerline 11")))))
 
 ;; Alt is meta.
 (if (eq system-type 'gnu/linux)
@@ -95,10 +98,10 @@
 (define-key esc-map (kbd "C-s") 'pyregexp-isearch-forward)
 
 ;; Solarized color theme.
-(if (display-graphic-p)
-    (load-theme 'solarized-light t))
+(load-theme 'solarized-dark t)
 
 ;; Don't save backup files.
 (setq make-backup-files nil)
 
 (provide 'athena-ui)
+;;; athena-ui.el ends here

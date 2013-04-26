@@ -29,7 +29,6 @@
                           ag
                           auto-complete
                           clojure-mode
-                          color-theme-solarized
                           drag-stuff
                           dummy-h-mode
                           ecb
@@ -40,6 +39,7 @@
                           graphviz-dot-mode
                           guru-mode
                           helm
+                          helm-ag
                           helm-c-yasnippet
                           helm-gist
                           helm-git
@@ -57,6 +57,7 @@
                           projectile
                           pyregexp
                           restclient
+                          solarized-theme
                           yaml-mode
                           yasnippet
                           )
