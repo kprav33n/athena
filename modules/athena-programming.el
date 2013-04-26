@@ -49,12 +49,11 @@
 (add-to-list 'semantic-default-submodes 'global-semantic-decoration-mode)
 (add-to-list 'semantic-default-submodes
              'global-semantic-idle-local-symbol-highlight-mode)
+(add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
+
 
 ;; Enable Semantic
 (semantic-mode 1)
-
-;; Turn of idle completions mode.
-(global-semantic-idle-completions-mode -1)
 
 ;; Advanced name completion.
 (require 'semantic/ia)
