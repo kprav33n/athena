@@ -103,5 +103,10 @@
 ;; Don't save backup files.
 (setq make-backup-files nil)
 
+;;; Powerline.
+(require 'powerline)
+(powerline-default-theme)
+
+
 (provide 'athena-ui)
 ;;; athena-ui.el ends here

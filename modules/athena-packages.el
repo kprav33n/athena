@@ -54,6 +54,7 @@
                           monky
                           paredit
                           popwin
+                          powerline
                           projectile
                           pyregexp
                           restclient
