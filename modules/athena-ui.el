@@ -98,7 +98,7 @@
 (define-key esc-map (kbd "C-s") 'pyregexp-isearch-forward)
 
 ;; Solarized color theme.
-(load-theme 'solarized-dark t)
+;(load-theme 'solarized-dark t)
 
 ;; Don't save backup files.
 (setq make-backup-files nil)
