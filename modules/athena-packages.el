@@ -35,7 +35,6 @@
                           ein
                           flycheck
                           google-c-style
-                          google-this
                           graphviz-dot-mode
                           guru-mode
                           helm

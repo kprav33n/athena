@@ -173,9 +173,9 @@
 (setq flymake-gui-warnings-enabled nil)
 
 
-;;; flycheck
-(add-hook 'prog-mode-hook 'flycheck-mode)
-(add-hook 'text-mode-hook 'flycheck-mode)
+;;; Flycheck
+(add-hook 'after-init-hook #'global-flycheck-mode)
+(setq flycheck-highlighting-mode 'lines)
 
 
 ;; iPython notebook support.
@@ -197,12 +197,9 @@
 (require 'ag)
 
 
-;; Google this.
-(require 'google-this)
-(google-this-mode 1)
-
 ;; Helm ls git
 (require 'helm-ls-git)
-(global-set-key (kbd "C-c g l") 'helm-ls-git-ls)
+
 
 (provide 'athena-programming)
+;;; athena-programming.el ends here
