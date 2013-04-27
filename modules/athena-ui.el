@@ -104,8 +104,8 @@
 (setq make-backup-files nil)
 
 ;;; Powerline.
-(require 'powerline)
-(powerline-default-theme)
+;; (require 'powerline)
+;; (powerline-default-theme)
 
 
 (provide 'athena-ui)
