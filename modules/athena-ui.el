@@ -20,7 +20,7 @@
 (cond ((eq system-type 'darwin)
        (setq default-frame-alist '((font . "Monaco 14"))))
       ((eq system-type 'gnu/linux)
-       (setq default-frame-alist '((font . "Monaco for Powerline 12")))))
+       (setq default-frame-alist '((font . "Ubuntu Mono 12")))))
 
 ;; Alt is meta.
 (if (eq system-type 'gnu/linux)
@@ -90,15 +90,13 @@
 ;; Display buffer should reuse frame.
 (setq-default display-buffer-reuse-frames t)
 
-;; Python regexp search.
-(require 'pyregexp)
-(define-key global-map (kbd "C-c r") 'pyregexp-replace)
-(define-key global-map (kbd "C-c q") 'pyregexp-query-replace)
-(define-key esc-map (kbd "C-r") 'pyregexp-isearch-backward)
-(define-key esc-map (kbd "C-s") 'pyregexp-isearch-forward)
+;;; Visual Regexp.
+(require 'visual-regexp)
+(define-key global-map (kbd "C-c r") 'vr/replace)
+(define-key global-map (kbd "C-c q") 'vr/query-replace)
 
 ;; Solarized color theme.
-;(load-theme 'solarized-dark t)
+(load-theme 'solarized-light t)
 
 ;; Don't save backup files.
 (setq make-backup-files nil)

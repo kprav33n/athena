@@ -16,17 +16,10 @@
 ;; Tabs are evil.
 (setq-default indent-tabs-mode nil)
 
-;; Turn on line numbers.
-(add-hook 'prog-mode-hook #'linum-mode)
 
-;; Turn on whitespace mode.
-(add-hook 'prog-mode-hook #'whitespace-mode)
-(add-hook 'nxml-mode-hook #'whitespace-mode)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Compilation mode settings.
 
-;; Paredit mode on certian major modes.
-(add-hook 'scheme-mode-hook #'paredit-mode)
-
-;; Compilation mode settings.
 ;; Automatically scroll compile buffer until the first error.
 (setq compilation-scroll-output 'first-error)
 ;; Ignore warnings.
@@ -41,6 +34,7 @@
 (setq display-buffer-function 'popwin:display-buffer)
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; CEDET.
 
 ;; Add further minor-modes to be enabled by semantic-mode.
@@ -89,6 +83,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Jedi.
+
 (add-hook 'python-mode-hook 'jedi:setup)
 (add-hook 'python-mode-hook 'jedi:ac-setup)
 (setq jedi:setup-keys t)
@@ -96,6 +91,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Whitespace mode.
+
 (require 'whitespace)
 (setq whitespace-style '(face lines-tail tab-mark trailing))
 ;; FIXME (2013-03-01, praveen): empty line visualization badly affects
@@ -104,6 +100,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Auto complete mode.
+
 (require 'auto-complete-config)
 (ac-config-default)
 
@@ -121,6 +118,12 @@
 (define-key ac-completing-map [tab] nil)
 (define-key ac-completing-map (kbd "C-TAB") 'ac-expand)
 (define-key ac-completing-map (kbd "M-/") 'ac-stop)
+
+;; Clang support for auto-complete.
+(require 'auto-complete-clang)
+;; (add-hook 'c-mode-common-hook
+;;           (lambda ()
+;;             (add-to-list 'ac-sources 'ac-source-clang)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -196,10 +199,36 @@
 ;; The silver searcher.
 (require 'ag)
 
-
 ;; Helm ls git
 (require 'helm-ls-git)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Various minor modes to be used.
+
+;; Turn on line numbers.
+(add-hook 'prog-mode-hook #'linum-mode)
+
+;; Turn on whitespace mode.
+(add-hook 'prog-mode-hook #'whitespace-mode)
+(add-hook 'nxml-mode-hook #'whitespace-mode)
+(add-hook 'yaml-mode-hook #'whitespace-mode)
+
+;; Highlight indentation.
+(add-hook 'prog-mode-hook #'highlight-indentation-mode)
+(add-hook 'nxml-mode-hook #'highlight-indentation-mode)
+(add-hook 'yaml-mode-hook #'highlight-indentation-mode)
+
+;; Paredit mode on certian major modes.
+(add-hook 'scheme-mode-hook #'paredit-mode)
+
+;; Turn on rainbow delimeters.
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+
+;; Emacs Lisp mode hook.
+(add-hook 'emacs-lisp-mode-hook
+          (lambda ()
+            (message "Foo")
+            (highlight-indentation-set-offset 2)))
 
 (provide 'athena-programming)
 ;;; athena-programming.el ends here

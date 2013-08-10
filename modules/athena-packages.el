@@ -26,8 +26,10 @@
 
 ;; Set of packages to install.
 (defvar athena-packages '(
+                          ascope
                           ag
                           auto-complete
+                          auto-complete-clang
                           clojure-mode
                           drag-stuff
                           dummy-h-mode
@@ -36,7 +38,6 @@
                           flycheck
                           google-c-style
                           graphviz-dot-mode
-                          guru-mode
                           helm
                           helm-ag
                           helm-c-yasnippet
@@ -55,9 +56,12 @@
                           popwin
                           powerline
                           projectile
-                          pyregexp
+                          rainbow-delimiters
                           restclient
+                          s
                           solarized-theme
+                          visual-regexp
+                          visual-regexp-steroids
                           yaml-mode
                           yasnippet
                           )
