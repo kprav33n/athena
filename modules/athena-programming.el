@@ -165,7 +165,10 @@
 
 ;; Projectile.
 (require 'projectile)
+(defun projectile-get-ext-command ()
+  projectile-generic-command)
 (projectile-global-mode)
+(setq projectile-enable-caching t)
 
 ;; Helm.
 (require 'helm-projectile)
@@ -178,8 +181,8 @@
 
 ;;; Flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
-(setq flycheck-highlighting-mode 'lines)
-
+;(setq flycheck-highlighting-mode 'lines)
+(setq flycheck-check-syntax-automatically 'save)
 
 ;; iPython notebook support.
 (require 'ein)
@@ -201,6 +204,14 @@
 
 ;; Helm ls git
 (require 'helm-ls-git)
+
+
+;;; Clojure.
+
+(require 'clojure-mode)
+
+(require 'nrepl)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Various minor modes to be used.
@@ -229,6 +240,27 @@
           (lambda ()
             (message "Foo")
             (highlight-indentation-set-offset 2)))
+
+(require 'gtags)
+(setq gtags-suggested-key-mapping t)
+
+(add-hook 'c-mode-hook
+   '(lambda ()
+      (gtags-mode 1)
+))
+
+(add-hook 'gtags-mode-hook
+  '(lambda ()
+     (define-key gtags-mode-map "\C-f" 'scroll-up)
+     (define-key gtags-mode-map "\C-b" 'scroll-down)
+))
+
+(add-hook 'gtags-select-mode-hook
+  '(lambda ()
+     (setq hl-line-face 'underline)
+     (hl-line-mode 1)
+))
+
 
 (provide 'athena-programming)
 ;;; athena-programming.el ends here

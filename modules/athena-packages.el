@@ -26,11 +26,14 @@
 
 ;; Set of packages to install.
 (defvar athena-packages '(
+                          ac-nrepl
+                          ace-jump-mode
                           ascope
                           ag
                           auto-complete
                           auto-complete-clang
                           clojure-mode
+                          clojure-test-mode
                           drag-stuff
                           dummy-h-mode
                           ecb
@@ -52,6 +55,7 @@
                           markdown-mode
                           melpa
                           monky
+                          nrepl
                           paredit
                           popwin
                           powerline

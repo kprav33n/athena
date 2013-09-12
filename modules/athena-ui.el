@@ -96,7 +96,7 @@
 (define-key global-map (kbd "C-c q") 'vr/query-replace)
 
 ;; Solarized color theme.
-(load-theme 'solarized-light t)
+; (load-theme 'solarized-light t)
 
 ;; Don't save backup files.
 (setq make-backup-files nil)
@@ -104,6 +104,11 @@
 ;;; Powerline.
 ;; (require 'powerline)
 ;; (powerline-default-theme)
+
+;; ace-jump-mode
+(require 'ace-jump-mode)
+(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+
 
 
 (provide 'athena-ui)
