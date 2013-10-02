@@ -34,6 +34,7 @@
                           auto-complete-clang
                           clojure-mode
                           clojure-test-mode
+                          diminish
                           drag-stuff
                           dummy-h-mode
                           ecb
@@ -63,9 +64,11 @@
                           rainbow-delimiters
                           restclient
                           s
+                          scala-mode2
                           solarized-theme
                           visual-regexp
                           visual-regexp-steroids
+                          w3m
                           yaml-mode
                           yasnippet
                           )

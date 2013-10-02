@@ -21,9 +21,10 @@
 ;;; Compilation mode settings.
 
 ;; Automatically scroll compile buffer until the first error.
-(setq compilation-scroll-output 'first-error)
+;(setq compilation-scroll-output 'first-error)
+(setq compilation-scroll-output t)
 ;; Ignore warnings.
-(setq compilation-skip-threshold 2)
+;(setq compilation-skip-threshold 2)
 
 ;; Easy recompile.
 (global-set-key (kbd "M-g r") 'recompile)
@@ -182,7 +183,7 @@
 ;;; Flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
 ;(setq flycheck-highlighting-mode 'lines)
-(setq flycheck-check-syntax-automatically 'save)
+(setq flycheck-check-syntax-automatically '(save))
 
 ;; iPython notebook support.
 (require 'ein)
@@ -261,6 +262,16 @@
      (hl-line-mode 1)
 ))
 
+;;; Scala
+
+;; scala-mode2
+(require 'scala-mode2)
+
+;; Ensime.
+(add-to-list 'load-path
+ (concat athena-vendor-dir "ensime/elisp"))
+(require 'ensime)
+(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
 (provide 'athena-programming)
 ;;; athena-programming.el ends here

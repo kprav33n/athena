@@ -20,7 +20,7 @@
 (cond ((eq system-type 'darwin)
        (setq default-frame-alist '((font . "Monaco 14"))))
       ((eq system-type 'gnu/linux)
-       (setq default-frame-alist '((font . "Ubuntu Mono 12")))))
+       (setq default-frame-alist '((font . "Ubuntu Mono 13")))))
 
 ;; Alt is meta.
 (if (eq system-type 'gnu/linux)
@@ -110,6 +110,15 @@
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
 
+;;; Remove modeline clutter.
+
+(require 'diminish)
+;; (diminish 'projectile-mode)
+;; (diminish 'helm-gtags)
+;; (diminish 'drag-stuff-mode)
+;; (diminish 'whitespace-mode)
+
+(require 'w3m)
 
 (provide 'athena-ui)
 ;;; athena-ui.el ends here
