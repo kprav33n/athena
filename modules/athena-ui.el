@@ -20,7 +20,7 @@
 (cond ((eq system-type 'darwin)
        (setq default-frame-alist '((font . "Monaco 14"))))
       ((eq system-type 'gnu/linux)
-       (setq default-frame-alist '((font . "Ubuntu Mono 13")))))
+       (setq default-frame-alist '((font . "Monaco For Powerline 11")))))
 
 ;; Alt is meta.
 (if (eq system-type 'gnu/linux)
