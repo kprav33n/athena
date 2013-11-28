@@ -41,7 +41,6 @@
 ;; Add further minor-modes to be enabled by semantic-mode.
 (add-to-list 'semantic-default-submodes 'global-semantic-idle-summary-mode)
 (add-to-list 'semantic-default-submodes 'global-semantic-highlight-func-mode)
-(add-to-list 'semantic-default-submodes 'global-semantic-decoration-mode)
 (add-to-list 'semantic-default-submodes
              'global-semantic-idle-local-symbol-highlight-mode)
 (add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
@@ -78,8 +77,8 @@
 
 
 ;;; Pymacs
-(require 'pymacs)
-(pymacs-load "ropemacs" "rope-")
+;; (require 'pymacs)
+;; (pymacs-load "ropemacs" "rope-")
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -210,8 +209,6 @@
 ;;; Clojure.
 
 (require 'clojure-mode)
-
-(require 'nrepl)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

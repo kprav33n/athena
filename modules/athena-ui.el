@@ -20,7 +20,7 @@
 (cond ((eq system-type 'darwin)
        (setq default-frame-alist '((font . "Monaco 14"))))
       ((eq system-type 'gnu/linux)
-       (setq default-frame-alist '((font . "Monaco For Powerline 11")))))
+       (setq default-frame-alist '((font . "Monaco For Powerline 12")))))
 
 ;; Alt is meta.
 (if (eq system-type 'gnu/linux)
@@ -96,7 +96,7 @@
 (define-key global-map (kbd "C-c q") 'vr/query-replace)
 
 ;; Solarized color theme.
-; (load-theme 'solarized-light t)
+(load-theme 'solarized-light t)
 
 ;; Don't save backup files.
 (setq make-backup-files nil)
@@ -119,6 +119,48 @@
 ;; (diminish 'whitespace-mode)
 
 (require 'w3m)
+
+
+;;; Various faces for highlights.
+
+(make-face 'athena-hi-common)
+(set-face-attribute 'athena-hi-common nil
+                    :height 1.0)
+
+(make-face 'athena-hi-blue)
+(set-face-attribute 'athena-hi-blue nil
+                    :inherit 'athena-hi-common
+                    :foreground "white"
+                    :background "royal blue")
+
+(make-face 'athena-hi-red)
+(set-face-attribute 'athena-hi-red nil
+                    :inherit 'athena-hi-common
+                    :foreground "white"
+                    :background "red")
+
+(make-face 'athena-hi-yellow)
+(set-face-attribute 'athena-hi-yellow nil
+                    :inherit 'athena-hi-common
+                    :foreground "black"
+                    :background "yellow")
+
+(make-face 'athena-hi-green)
+(set-face-attribute 'athena-hi-green nil
+                    :inherit 'athena-hi-common
+                    :foreground "white"
+                    :background "lime green")
+
+(make-face 'athena-hi-orange)
+(set-face-attribute 'athena-hi-orange nil
+                    :inherit 'athena-hi-common
+                    :foreground "black"
+                    :background "orange")
+
+(make-face 'athena-hi-dull)
+(set-face-attribute 'athena-hi-dull nil
+                    :foreground "grey80")
+
 
 (provide 'athena-ui)
 ;;; athena-ui.el ends here

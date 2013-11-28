@@ -56,7 +56,6 @@
                           markdown-mode
                           melpa
                           monky
-                          nrepl
                           paredit
                           popwin
                           powerline
