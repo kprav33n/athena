@@ -20,7 +20,7 @@
 (cond ((eq system-type 'darwin)
        (setq default-frame-alist '((font . "Monaco 14"))))
       ((eq system-type 'gnu/linux)
-       (setq default-frame-alist '((font . "Monaco For Powerline 12")))))
+       (setq default-frame-alist '((font . "Monaco For Powerline 11")))))
 
 ;; Alt is meta.
 (if (eq system-type 'gnu/linux)
@@ -102,8 +102,13 @@
 (setq make-backup-files nil)
 
 ;;; Powerline.
-;; (require 'powerline)
-;; (powerline-default-theme)
+(require 'powerline)
+(set-face-attribute 'powerline-active1 nil
+                    :background "royal blue"
+                    :foreground "white")
+(set-face-attribute 'powerline-active2 nil
+                    :foreground "white")
+(powerline-default-theme)
 
 ;; ace-jump-mode
 (require 'ace-jump-mode)
@@ -113,10 +118,16 @@
 ;;; Remove modeline clutter.
 
 (require 'diminish)
-;; (diminish 'projectile-mode)
-;; (diminish 'helm-gtags)
-;; (diminish 'drag-stuff-mode)
-;; (diminish 'whitespace-mode)
+(eval-after-load "projectile" '(diminish 'projectile-mode))
+(eval-after-load "drag-stuff" '(diminish 'drag-stuff-mode))
+(eval-after-load "whitespace" '(diminish 'whitespace-mode))
+(eval-after-load "auto-complete" '(diminish 'auto-complete-mode))
+(eval-after-load "abbrev" '(diminish 'abbrev-mode))
+;(eval-after-load "gtags" '(diminish 'gtags-mode))
+;(eval-after-load "helm" '(diminish 'helm-mode))
+;(eval-after-load "yas" (diminish 'yas-minor-mode))
+
+;;; Browse HTML pages.
 
 (require 'w3m)
 

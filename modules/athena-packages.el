@@ -39,6 +39,7 @@
                           dummy-h-mode
                           ecb
                           ein
+                          fill-column-indicator
                           flycheck
                           google-c-style
                           graphviz-dot-mode
@@ -67,6 +68,7 @@
                           solarized-theme
                           visual-regexp
                           visual-regexp-steroids
+                          volatile-highlights
                           w3m
                           yaml-mode
                           yasnippet

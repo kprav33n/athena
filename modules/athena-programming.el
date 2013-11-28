@@ -93,10 +93,20 @@
 ;;; Whitespace mode.
 
 (require 'whitespace)
-(setq whitespace-style '(face lines-tail tab-mark trailing))
+(setq whitespace-style '(face lines-tail tab-mark empty))
 ;; FIXME (2013-03-01, praveen): empty line visualization badly affects
 ;; auto-complete-mode.
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Fill coulmn indicator.
+
+(require 'fill-column-indicator)
+(setq fci-rule-color "thistle")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Volatile highlights mode.
+
+(require 'volatile-highlights)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Auto complete mode.
@@ -222,10 +232,19 @@
 (add-hook 'nxml-mode-hook #'whitespace-mode)
 (add-hook 'yaml-mode-hook #'whitespace-mode)
 
+;; Turn on fill-column-indicator mode.
+(add-hook 'prog-mode-hook
+          (lambda ()
+            (setq fci-rule-column 80)
+            (fci-mode)))
+
 ;; Highlight indentation.
 (add-hook 'prog-mode-hook #'highlight-indentation-mode)
 (add-hook 'nxml-mode-hook #'highlight-indentation-mode)
 (add-hook 'yaml-mode-hook #'highlight-indentation-mode)
+
+;; Volatile highlights.
+(add-hook 'progn-mode-hook #'volatile-highlights-mode)
 
 ;; Paredit mode on certian major modes.
 (add-hook 'scheme-mode-hook #'paredit-mode)
