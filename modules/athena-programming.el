@@ -93,7 +93,7 @@
 ;;; Whitespace mode.
 
 (require 'whitespace)
-(setq whitespace-style '(face lines-tail tab-mark empty))
+(setq whitespace-style '(face tab-mark))
 ;; FIXME (2013-03-01, praveen): empty line visualization badly affects
 ;; auto-complete-mode.
 
