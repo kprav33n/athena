@@ -39,8 +39,16 @@
                           dummy-h-mode
                           ecb
                           ein
+                          ensime
+                          expand-region
                           fill-column-indicator
                           flycheck
+                          ggtags
+                          git-commit-mode
+                          git-rebase-mode
+                          gitconfig-mode
+                          gitignore-mode
+                          gitattributes-mode
                           google-c-style
                           graphviz-dot-mode
                           helm
@@ -52,20 +60,24 @@
                           helm-ls-git
                           helm-projectile
                           highlight-indentation
+                          ido-ubiquitous
                           jedi
                           magit
                           markdown-mode
                           melpa
                           monky
+                          multiple-cursors
                           paredit
-                          popwin
                           powerline
                           projectile
                           rainbow-delimiters
                           restclient
                           s
                           scala-mode2
+                          smartparens
+                          smex
                           solarized-theme
+                          undo-tree
                           visual-regexp
                           visual-regexp-steroids
                           volatile-highlights

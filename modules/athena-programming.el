@@ -30,10 +30,6 @@
 (global-set-key (kbd "M-g r") 'recompile)
 (global-set-key (kbd "M-g M-r") 'recompile)
 
-;; Popup window mode.
-(require 'popwin)
-(setq display-buffer-function 'popwin:display-buffer)
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; CEDET.
@@ -84,15 +80,14 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Jedi.
 
-(add-hook 'python-mode-hook 'jedi:setup)
-(add-hook 'python-mode-hook 'jedi:ac-setup)
-(setq jedi:setup-keys t)
+;; (add-hook 'python-mode-hook 'jedi:setup)
+;; (add-hook 'python-mode-hook 'jedi:ac-setup)
+;; (setq jedi:setup-keys t)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Whitespace mode.
 
-(require 'whitespace)
 (setq whitespace-style '(face tab-mark))
 ;; FIXME (2013-03-01, praveen): empty line visualization badly affects
 ;; auto-complete-mode.
@@ -102,11 +97,6 @@
 
 (require 'fill-column-indicator)
 (setq fci-rule-color "thistle")
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Volatile highlights mode.
-
-(require 'volatile-highlights)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Auto complete mode.
@@ -139,6 +129,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; YASnippet.
 (require 'yasnippet)
+;; FIXME: Make this conditional.
 (defvar yas/snippet-dirs `(,(concat user-emacs-directory "snippets")))
 (yas/global-mode 1)
 
@@ -152,12 +143,11 @@
 (global-set-key (kbd "C-c y") 'helm-c-yas-complete)
 
 ;; Drag stuff.
-(require 'drag-stuff)
-(add-to-list 'drag-stuff-except-modes 'org-mode)
 (drag-stuff-global-mode 1)
+(add-to-list 'drag-stuff-except-modes 'org-mode)
+
 
 ;; YAML mode.
-(require 'yaml-mode)
 (add-to-list 'auto-mode-alist (cons (purecopy "\\.y[a]*ml$") 'yaml-mode))
 
 ;; Google C/C++ style.
@@ -183,15 +173,9 @@
 ;; Helm.
 (require 'helm-projectile)
 
-;; Flymake.  TODO (2013-04-02, praveen): Remove flymake once flycheck
-;; is configured for all use cases.
-(require 'flymake)
-(setq flymake-gui-warnings-enabled nil)
-
-
 ;;; Flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
-;(setq flycheck-highlighting-mode 'lines)
+(setq flycheck-highlighting-mode 'lines)
 (setq flycheck-check-syntax-automatically '(save))
 
 ;; iPython notebook support.
@@ -255,28 +239,15 @@
 ;; Emacs Lisp mode hook.
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()
-            (message "Foo")
             (highlight-indentation-set-offset 2)))
 
-(require 'gtags)
-(setq gtags-suggested-key-mapping t)
 
-(add-hook 'c-mode-hook
-   '(lambda ()
-      (gtags-mode 1)
-))
-
-(add-hook 'gtags-mode-hook
-  '(lambda ()
-     (define-key gtags-mode-map "\C-f" 'scroll-up)
-     (define-key gtags-mode-map "\C-b" 'scroll-down)
-))
-
-(add-hook 'gtags-select-mode-hook
-  '(lambda ()
-     (setq hl-line-face 'underline)
-     (hl-line-mode 1)
-))
+;;; GNU Global.
+(require 'ggtags)
+(add-hook 'c-mode-common-hook
+          (lambda ()
+            (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
+              (ggtags-mode 1))))
 
 ;;; Scala
 
@@ -284,10 +255,9 @@
 (require 'scala-mode2)
 
 ;; Ensime.
-(add-to-list 'load-path
- (concat athena-vendor-dir "ensime/elisp"))
 (require 'ensime)
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+
 
 (provide 'athena-programming)
 ;;; athena-programming.el ends here

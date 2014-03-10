@@ -18,9 +18,9 @@
 ;;; Code:
 
 (cond ((eq system-type 'darwin)
-       (setq default-frame-alist '((font . "Monaco 14"))))
+       (setq default-frame-alist '((font . "Monaco 13"))))
       ((eq system-type 'gnu/linux)
-       (setq default-frame-alist '((font . "Ubuntu Mono 13")))))
+       (setq default-frame-alist '((font . "Monaco for Powerline 11")))))
 
 ;; Alt is meta.
 (if (eq system-type 'gnu/linux)
@@ -51,6 +51,8 @@
 ;; Use the selected window when switching to a buffer in ido-mode.
 (setq ido-default-buffer-method 'selected-window)
 
+(ido-ubiquitous)
+
 ;; Show column number in the mode line.
 (column-number-mode 1)
 
@@ -72,37 +74,29 @@
 (savehist-mode 1)
 
 ;; Helm.
-(require 'helm)
 (global-set-key (kbd "C-c h") 'helm-mini)
 
 ;; Full screen on Mac.
 (global-set-key (kbd "s-f") 'ns-toggle-fullscreen)
 
-;; Auto complete.
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
-(ac-config-default)
 
 ;; Use Emacs's own emulation of ls for dired.
 (setq ls-lisp-use-insert-directory-program nil)
-(require 'ls-lisp)
 
 ;; Display buffer should reuse frame.
 (setq-default display-buffer-reuse-frames t)
 
 ;;; Visual Regexp.
-(require 'visual-regexp)
 (define-key global-map (kbd "C-c r") 'vr/replace)
 (define-key global-map (kbd "C-c q") 'vr/query-replace)
 
 ;; Solarized color theme.
-(load-theme 'solarized-light t)
+;; (load-theme 'solarized-dark t)
 
 ;; Don't save backup files.
 (setq make-backup-files nil)
 
 ;;; Powerline.
-(require 'powerline)
 (set-face-attribute 'powerline-active1 nil
                     :foreground "white")
 (set-face-attribute 'powerline-active2 nil
@@ -110,25 +104,54 @@
 (powerline-default-theme)
 
 ;; ace-jump-mode
-(require 'ace-jump-mode)
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
 
 ;;; Remove modeline clutter.
 
-(require 'diminish)
 (eval-after-load "projectile" '(diminish 'projectile-mode))
 (eval-after-load "drag-stuff" '(diminish 'drag-stuff-mode))
 (eval-after-load "whitespace" '(diminish 'whitespace-mode))
 (eval-after-load "auto-complete" '(diminish 'auto-complete-mode))
 (eval-after-load "abbrev" '(diminish 'abbrev-mode))
-;(eval-after-load "gtags" '(diminish 'gtags-mode))
-;(eval-after-load "helm" '(diminish 'helm-mode))
-;(eval-after-load "yas" (diminish 'yas-minor-mode))
+;; (eval-after-load "gtags" '(diminish 'gtags-mode))
+;; (eval-after-load "helm" '(diminish 'helm-mode))
+;; (eval-after-load "yas" (diminish 'yas-minor-mode))
 
-;;; Browse HTML pages.
 
-(require 'w3m)
+;;; Turn on undo-tree.
+(global-undo-tree-mode)
+
+
+;;; Expand region.
+(global-set-key (kbd "C-=") 'er/expand-region)
+
+
+;;; Smartparens.
+(require 'smartparens-config)
+
+;;; Smex.
+
+(smex-initialize)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+;; This is the old M-x.
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+
+
+;;; Multiple cursors.
+
+(require 'multiple-cursors)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+
+
+
+;;; Listen on TCP socket when running in server mode.
+
+;; (setq server-use-tcp t)
+;; (setq server-host (system-name))
 
 
 ;;; Various faces for highlights.
@@ -158,7 +181,7 @@
 (make-face 'athena-hi-green)
 (set-face-attribute 'athena-hi-green nil
                     :inherit 'athena-hi-common
-                    :foreground "white"
+                    :foreground "black"
                     :background "lime green")
 
 (make-face 'athena-hi-orange)
@@ -170,7 +193,6 @@
 (make-face 'athena-hi-dull)
 (set-face-attribute 'athena-hi-dull nil
                     :foreground "grey80")
-
 
 (provide 'athena-ui)
 ;;; athena-ui.el ends here
