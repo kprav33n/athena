@@ -34,35 +34,35 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; CEDET.
 
-;; Add further minor-modes to be enabled by semantic-mode.
-(add-to-list 'semantic-default-submodes 'global-semantic-idle-summary-mode)
-(add-to-list 'semantic-default-submodes 'global-semantic-highlight-func-mode)
-(add-to-list 'semantic-default-submodes
-             'global-semantic-idle-local-symbol-highlight-mode)
-(add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
+;; ;; Add further minor-modes to be enabled by semantic-mode.
+;; (add-to-list 'semantic-default-submodes 'global-semantic-idle-summary-mode)
+;; (add-to-list 'semantic-default-submodes 'global-semantic-highlight-func-mode)
+;; (add-to-list 'semantic-default-submodes
+;;              'global-semantic-idle-local-symbol-highlight-mode)
+;; (add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
 
 
-;; Enable Semantic
-(semantic-mode 1)
+;; ;; Enable Semantic
+;; (semantic-mode 1)
 
-;; Advanced name completion.
-(require 'semantic/ia)
+;; ;; Advanced name completion.
+;; (require 'semantic/ia)
 
-;; Automatically find system headers.
-(require 'semantic/bovine/gcc)
+;; ;; Automatically find system headers.
+;; (require 'semantic/bovine/gcc)
 
-;; GNU Global support.
-(when (and (fboundp 'cedet-gnu-global-version-check)
-           (cedet-gnu-global-version-check t))
-  (semanticdb-enable-gnu-global-databases 'c-mode)
-  (semanticdb-enable-gnu-global-databases 'c++-mode))
+;; ;; GNU Global support.
+;; (when (and (fboundp 'cedet-gnu-global-version-check)
+;;            (cedet-gnu-global-version-check t))
+;;   (semanticdb-enable-gnu-global-databases 'c-mode)
+;;   (semanticdb-enable-gnu-global-databases 'c++-mode))
 
-;; ;; FIXME (2013-02-19, praveen): This is causing Emacs to hang when
-;; ;; typing 'std::'
+;; FIXME (2013-02-19, praveen): This is causing Emacs to hang when
+;; typing 'std::'
 
-;; ;; (add-hook 'c-mode-common-hook
-;; ;;           (lambda ()
-;; ;;             (add-to-list 'ac-sources 'ac-source-semantic)))
+;; (add-hook 'c-mode-common-hook
+;;           (lambda ()
+;;             (add-to-list 'ac-sources 'ac-source-semantic)))
 
 ;; ;; Enable EDE (Project Management) features.
 ;; (global-ede-mode 1)
@@ -113,21 +113,10 @@
 ;; Make auto-complete play well with linum-mode.
 (ac-linum-workaround)
 
-;; TAB key behavior in auto complete mode.
-(define-key ac-completing-map "\t" nil)
-(define-key ac-completing-map [tab] nil)
-(define-key ac-completing-map (kbd "C-TAB") 'ac-expand)
-(define-key ac-completing-map (kbd "M-/") 'ac-stop)
-
-;; Clang support for auto-complete.
-(require 'auto-complete-clang)
-;; (add-hook 'c-mode-common-hook
-;;           (lambda ()
-;;             (add-to-list 'ac-sources 'ac-source-clang)))
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; YASnippet.
+
 (require 'yasnippet)
 ;; FIXME: Make this conditional.
 (defvar yas/snippet-dirs `(,(concat user-emacs-directory "snippets")))
@@ -165,10 +154,7 @@
 
 ;; Projectile.
 (require 'projectile)
-(defun projectile-get-ext-command ()
-  projectile-generic-command)
 (projectile-global-mode)
-(setq projectile-enable-caching t)
 
 ;; Helm.
 (require 'helm-projectile)
@@ -248,6 +234,15 @@
           (lambda ()
             (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
               (ggtags-mode 1))))
+
+;;; xcsope.
+(require 'xcscope)
+(cscope-setup)
+
+;;; git-gutter.
+(require 'git-gutter-fringe)
+(global-git-gutter-mode t)
+
 
 ;;; Scala
 

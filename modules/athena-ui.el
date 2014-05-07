@@ -90,8 +90,23 @@
 (define-key global-map (kbd "C-c r") 'vr/replace)
 (define-key global-map (kbd "C-c q") 'vr/query-replace)
 
+
+;;; Anzu.
+(require 'anzu)
+(global-anzu-mode +1)
+
+(custom-set-variables
+ '(anzu-mode-lighter "")
+ '(anzu-deactivate-region t)
+ '(anzu-search-threshold 1000)
+ '(anzu-replace-to-string-separator " => "))
+
+(set-face-attribute 'anzu-mode-line nil
+                    :foreground "black" :weight 'bold)
+
 ;; Solarized color theme.
-;; (load-theme 'solarized-dark t)
+;; (if (eq system-type 'darwin)
+;;     (load-theme 'solarized-light t))
 
 ;; Don't save backup files.
 (setq make-backup-files nil)
@@ -145,6 +160,17 @@
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+
+
+;;; Switching to previous buffer.
+
+(defun switch-to-previous-buffer ()
+  "Switch to previously open buffer.
+Repeated invocations toggle between the two most recently open buffers."
+  (interactive)
+  (switch-to-buffer (other-buffer (current-buffer) 1)))
+
+(global-set-key (kbd "<C-tab>") 'switch-to-previous-buffer)
 
 
 

@@ -28,6 +28,7 @@
 (defvar athena-packages '(
                           ac-nrepl
                           ace-jump-mode
+                          anzu
                           ascope
                           ag
                           auto-complete
@@ -39,12 +40,14 @@
                           dummy-h-mode
                           ecb
                           ein
+                          emacs-eclim
                           ensime
                           expand-region
                           fill-column-indicator
                           flycheck
                           ggtags
                           git-commit-mode
+                          git-gutter-fringe
                           git-rebase-mode
                           gitconfig-mode
                           gitignore-mode
@@ -82,6 +85,7 @@
                           visual-regexp-steroids
                           volatile-highlights
                           w3m
+                          xcscope
                           yaml-mode
                           yasnippet
                           )
