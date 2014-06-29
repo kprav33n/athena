@@ -17,49 +17,6 @@
 (require 'org-install)
 (setq org-replace-disputed-keys 't)
 
-;; Generate standup report from Org file.
-;; Fixme: Refactor this function.
-(defun athena-standup-report-from-org()
-  (interactive)
-
-  (generate-new-buffer "Standup Report")
-  (save-excursion (goto-char (point-min))
-		  (re-search-forward "* Status")
-		  (re-search-forward "** 20")
-		  (forward-line 1)
-		  (copy-region-as-kill (point)
-				       (save-excursion (re-search-forward "^$") (point)))
-		  (switch-to-buffer "Standup Report")
-		  (goto-char (point-max))
-		  (insert "Status:")
-		  (newline-and-indent)
-		  (yank)
-		  (newline-and-indent))
-
-  (save-excursion (goto-char (point-min))
-		  (re-search-forward "* Plan")
-		  (re-search-forward "** 20")
-		  (forward-line 1)
-		  (copy-region-as-kill (point)
-				       (save-excursion (re-search-forward "^$") (point)))
-		  (switch-to-buffer "Standup Report")
-		  (goto-char (point-max))
-		  (insert "Plan:")
-		  (newline-and-indent)
-		  (yank))
-
-  (save-excursion (switch-to-buffer "Standup Report")
-		  (mark-whole-buffer)
-		  (shell-command-on-region (region-beginning)
-					   (region-end)
-					   "~/UCS/Scripts/AppleScript/NGSStandupReport.scpt"))
-  (kill-buffer "Standup Report"))
-
-;; (add-to-list 'org-emphasis-alist
-;;              '("@" org-warning "<b>" "</b>"))
-;; (add-to-list 'org-export-latex-emphasis-alist
-;;              '("@" "\\alert{%s}" nil))
-
 ;; Keep timestamps in TOC.
 (setq org-export-remove-timestamps-from-toc nil)
 
@@ -77,8 +34,22 @@
                  (not (string= lang "plantuml"))))
 (setq org-confirm-babel-evaluate 'my-org-confirm-babel-evaluate)
 
-(require 'org-latex)
-(setq org-export-latex-listings 'minted)
-;(add-to-list 'org-export-latex-packages-alist '("" "minted"))
+;;; The following are added for the new org-mode exporter.
+
+(require 'ox-latex)
+(add-to-list 'org-latex-classes
+             '("beamer"
+               "\\documentclass\[presentation\]\{beamer\}"
+               ("\\section\{%s\}" . "\\section*\{%s\}")
+               ("\\subsection\{%s\}" . "\\subsection*\{%s\}")
+               ("\\subsubsection\{%s\}" . "\\subsubsection*\{%s\}")))
+
+;; Use minted for syntax highlighting.
+(setq org-latex-listings 'minted)
+(add-to-list 'org-latex-packages-alist '("" "minted"))
+
+(require 'ox-beamer)
+(setq org-beamer-outline-frame-options "")
 
 (provide 'athena-org)
+;;; athena-org.el ends here
