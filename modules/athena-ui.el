@@ -173,6 +173,33 @@ Repeated invocations toggle between the two most recently open buffers."
 (global-set-key (kbd "<C-tab>") 'switch-to-previous-buffer)
 
 
+;;; Eshell.
+
+(defmacro with-face (str &rest properties)
+    `(propertize ,str 'face (list ,@properties)))
+  
+(defun athena-eshell-prompt ()
+  (let ((header-bg "#fff"))
+    (concat
+     (with-face "  " :background header-bg)
+     (with-face user-login-name :foreground "blue" :background header-bg)
+     (with-face "@" :background header-bg)
+     (with-face (system-name) :foreground "dark green" :background header-bg)
+     (with-face ":" :background header-bg)
+     (with-face (concat (eshell/pwd) " ") :background header-bg :foreground "royal blue")
+     (with-face (format-time-string "(%Y-%m-%d %H:%M) " (current-time)) :background header-bg :foreground "medium purple")
+     (with-face
+      (or (ignore-errors (format "[%s]" (vc-responsible-backend default-directory))) "")
+      :background header-bg)
+     (with-face "\n" :background header-bg)
+     "  "
+     (if (= (user-uid) 0)
+         (with-face "#" :foreground "red")
+       "$")
+     " ")))
+(setq eshell-prompt-function 'athena-eshell-prompt)
+(setq eshell-highlight-prompt nil)
+
 
 ;;; Listen on TCP socket when running in server mode.
 
