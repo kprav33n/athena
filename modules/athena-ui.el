@@ -185,7 +185,7 @@ Repeated invocations toggle between the two most recently open buffers."
 (defun athena-eshell-prompt ()
   (let ((header-bg "#fff"))
     (concat
-     (with-face "  " :background header-bg)
+     (with-face "╓ " :background header-bg)
      (with-face user-login-name :foreground "blue" :background header-bg)
      (with-face "@" :background header-bg)
      (with-face (system-name) :foreground "dark green" :background header-bg)
@@ -196,7 +196,7 @@ Repeated invocations toggle between the two most recently open buffers."
       (or (ignore-errors (format "[%s]" (vc-responsible-backend default-directory))) "")
       :background header-bg)
      (with-face "\n" :background header-bg)
-     "  "
+     "╙ "
      (if (= (user-uid) 0)
          (with-face "#" :foreground "red")
        "$")
