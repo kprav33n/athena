@@ -88,6 +88,7 @@
                           xcscope
                           yaml-mode
                           yasnippet
+                          zenburn-theme
                           )
   "A list of packages that has to be ensured installed from package archives")
 

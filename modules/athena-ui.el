@@ -105,8 +105,8 @@
                     :foreground "black" :weight 'bold)
 
 ;; Solarized color theme.
-;; (if (eq system-type 'darwin)
-;;     (load-theme 'solarized-light t))
+(if (eq system-type 'darwin)
+    (load-theme 'zenburn t))
 
 ;; Don't save backup files.
 (setq make-backup-files nil)
