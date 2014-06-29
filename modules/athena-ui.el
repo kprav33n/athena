@@ -129,6 +129,10 @@
 (eval-after-load "whitespace" '(diminish 'whitespace-mode))
 (eval-after-load "auto-complete" '(diminish 'auto-complete-mode))
 (eval-after-load "abbrev" '(diminish 'abbrev-mode))
+(eval-after-load "undo-tree" '(diminish 'undo-tree-mode))
+(eval-after-load "git-gutter" '(diminish 'git-gutter-mode))
+(eval-after-load "yas-minor-mode" '(diminish 'yas-minor-mode))
+
 ;; (eval-after-load "gtags" '(diminish 'gtags-mode))
 ;; (eval-after-load "helm" '(diminish 'helm-mode))
 ;; (eval-after-load "yas" (diminish 'yas-minor-mode))
